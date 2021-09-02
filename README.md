@@ -74,7 +74,7 @@ The purpose is to make it easier for the patients to find the proper help  accor
 
 ### Entity-Relationship (ER) Diagram
 
-![ER Diagram](./images/entity diagram.png)
+![ER Diagram](./images/entity_diagram.png)
 
 ## Teaser (MS3)
 
