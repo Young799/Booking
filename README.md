@@ -58,19 +58,23 @@ npm run serve
 Open the `server` and `client` in separate VSCode workspaces or open the combined [backend-frontend.code-workspace](./backend-frontend.code-workspace). Otherwise, workspace-specific settings don't work properly.
 
 ## System Definition (MS0)
+We are going to be bulding a medical help clinc system. Where patients can book and inquire about medical help based on thier needs. The system will provide them with the time and the doctors avaiable for both online and pyiscal meetings.   
 
 ### Purpose
+The purpose is to make it easier for the patients to find the proper help  according to their medical needs.   
 
-2-5 sentences describing what the system does
 
 ### Pages
 
-* Home: 1-3 sentences describing what the page displays and what a user can do
-* Shopping cart: ...
+* Home page: We are going to have a home page  where web visitors can read and see what the clinc provide. And it will also have a section where someone can register and have an account. Those registred patients can get the help they need accordingly. 
+* Resgistration/sign up: in this page people can register and become memberas with te clinc and signout button. 
+* my Page:  this page will provide the patients with all their personal status and informations and signout button.
+* Booking Page: this platform will make the patients to be able to book an appointment as well as having the avable times and dates at the same time a perosn can book an appointment accordingly and signout button. 
+
 
 ### Entity-Relationship (ER) Diagram
 
-![ER Diagram](./images/er_diagram.png)
+![ER Diagram](./images/entity diagram.png)
 
 ## Teaser (MS3)
 
