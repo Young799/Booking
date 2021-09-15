@@ -9,7 +9,8 @@ var doctorSchema=new Schema({
     phoneNumber:Number,
     specialist:String,
     email_address:String,
-    //booking ID 
+    appointment :[{type:Schema.Types.ObjectId,ref: 'appointment '}]
+   
 });
 
 module.exports=mongoose.model('doctor',doctorSchema);

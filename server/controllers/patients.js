@@ -3,8 +3,8 @@ var router = express.Router();
 var Patient = require('../models/patient');
 var appointment=require('../models/appointment')
 
-
-router.post('/api/patient', function(req, res, next){
+//create patient
+router.post('/api/patients', function(req, res, next){
     var  patient= new Patient(req.body);
     patient.save(function(err, patient) {
         if (err) { return next(err); }
@@ -12,36 +12,15 @@ router.post('/api/patient', function(req, res, next){
     })
 }); 
 
-router.get('/api/patient',async(req,res)=>{
+//retrieve patients collection
+router.get('/api/patients',async(req,res)=>{
     var patient=await Patient.find()
     res.json(patient);
 });
 
 
-
-//get specific patient
-router.get('/api/patient/:patientId',async (req, res)=>{
-
-    try{
-        const patient=await Patient.findById(req.params.patientId);
-        res.json(patient);
-    }catch(err){
-        res.json({message:err});
-    }
-});
-
-//delate one patient 
-router.delete('/api/patient/:patientId', async (req, res)=>{
-    try{
-        const removedPatient= await Patient.remove({_id:req.params.patientId});
-        res.json(removedPatient);
-    }catch(err){
-        res.json({message:err});
-    }
-});
-
-//delete  patient collection
-router.delete('/api/patient',async (req, res)=>{
+//delete  patients collection
+router.delete('/api/patients',async (req, res)=>{
 
     try{
         const patient=await Patient.remove();
@@ -51,31 +30,19 @@ router.delete('/api/patient',async (req, res)=>{
     }
 });
 
-//delate individual patient 
-router.delete('/api/patient/', async (req, res)=>{
+//get individual patient
+router.get('/api/patients/:patientId',async (req, res)=>{
+
     try{
-        const removedPatient= await Patient.remove({_id:req.params.patientId});
-        res.json(removedPatient);
+        const patient=await Patient.findById({_id:req.params.patientId});
+        res.json(patient);
     }catch(err){
         res.json({message:err});
     }
 });
 
-//update patient
-router.patch('/api/patient/:patientId', async(req, res)=>{
-
-    try{
-        const updatedPatient= await Patient.updateOne(
-        {_id:req.params.patientId},
-        {$set:{firstName:req.body.firstName}});
-        res.json(updatedPatient);
-    }catch(err){
-        res.json({message:err});
-    }
-});
-
-//Update patient with PUT
-router.put('/api/patient/:patientId', async(req, res)=>{
+//Update the individual patient with PUT
+router.put('/api/patients/:patientId', async(req, res)=>{
 
     try{
         const updatedPatient= await Patient.updateOne(
@@ -92,5 +59,29 @@ router.put('/api/patient/:patientId', async(req, res)=>{
         res.json({message:err});
     }
 });
+
+//update the individual patient with first
+router.patch('/api/patients/:patientId', async(req, res)=>{
+
+    try{
+        const updatedPatient= await Patient.updateOne(
+        {_id:req.params.patientId},
+        {$set:{firstName:req.body.firstName}});
+        res.json(updatedPatient);
+    }catch(err){
+        res.json({message:err});
+    }
+});
+
+//delate individual patient 
+router.delete('/api/patients/:patientId', async (req, res)=>{
+    try{
+        const removedPatient= await Patient.remove({_id:req.params.patientId});
+        res.json(removedPatient);
+    }catch(err){
+        res.json({message:err});
+    }
+});
+
 
 module.exports = router ;

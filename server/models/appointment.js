@@ -2,13 +2,13 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
 
+
 const appointmentSchema=new Schema({
-    
-    BookingID:Number,
-    bookedDate:Date, 
-    bookedTime:Number,  //date and time
-    patient:{type:mongoose.Schema.Types.ObjectId,ref: 'patient'},
-    doctor: {type:mongoose.Schema.Types.ObjectId,ref:'doctor'},
+    bookingID:Number,
+   // _id:Schema.Types.ObjectId,
+    appointmentDate:Date, 
+    Time:Number,
+    patient: {type:Schema.Types.ObjectId,ref:'patient'},
     isConfirmed:Boolean
 
     });
