@@ -4,7 +4,7 @@ const Schema=mongoose.Schema;
 
 
 const appointmentSchema=new Schema({
-    bookingID:Number,
+    
    // _id:Schema.Types.ObjectId,
     appointmentDate:Date, 
     Time:Number,

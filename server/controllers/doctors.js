@@ -80,11 +80,11 @@ router.patch('/api/doctors/:doctorId', async (req, res)=>{
 });
 
 
-//delate the individual doctor
+//delete the individual doctor
 router.delete('/api/doctors/:doctorId', async (req, res)=>{
     try{
-        const removedPatient= await Patient.remove({_id:req.params.doctorId});
-        res.json(removedPatient);
+        const removedDoctor= await Doctor.remove({_id:req.params.doctorId});
+        res.json(removedDoctor);
     }catch(err){
         res.json({message:err});
     }

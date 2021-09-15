@@ -41,6 +41,19 @@ router.get('/api/patients/:patientId',async (req, res)=>{
     }
 });
 
+
+//get patient sort by their firstname
+
+/*router.get('/api/patients?sortBy, async (req, res)=>{
+
+    try{
+        const patient=await Patient.findById({_id:req.params.patientId});
+        res.json(patient);
+    }catch(err){
+        res.json({message:err});
+    }
+});*/
+
 //Update the individual patient with PUT
 router.put('/api/patients/:patientId', async(req, res)=>{
 
