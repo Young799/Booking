@@ -88,7 +88,7 @@ router.get('/api/appointments',async (req,res)=>{
         }
     });
 
-// Deleting all appointments 
+/* Deleting all appointments 
 router.delete('/api/appointments',async (req,res)=>{
         try{
             const appointment=await Appointment.remove();
@@ -96,6 +96,6 @@ router.delete('/api/appointments',async (req,res)=>{
         }catch(err){
             res.json({message:err});
         }
-    });  
+    });  */
      
 module.exports=router;

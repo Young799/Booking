@@ -44,7 +44,8 @@ router.get('/api/patients/:id',async (req, res)=>{
     }
 });
 
-//Update the individual patient with PUT
+
+/* Update the individual patient with PUT
 router.put('/api/patients/:id', async(req, res)=>{
     try{
         const updatedPatient= await Patient.updateOne(
@@ -58,9 +59,9 @@ router.put('/api/patients/:id', async(req, res)=>{
     }catch(err){
         res.json({message:err});
     }
-});
+});*/
 
-//update the individual patient with first
+//update the individual patient with first  
 router.patch('/api/patients/:id', async(req, res)=>{
     try{
         const updatedPatient= await Patient.updateOne(

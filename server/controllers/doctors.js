@@ -20,6 +20,15 @@ router.get('/api/doctors',async (req,res)=>{
         res.json({message:err});
     }
 });
+//delete the individual doctor 
+router.delete('/api/doctors/:id', async (req, res)=>{
+    try{
+        const removedDoctor= await Doctor.remove({_id:req.params.id});
+        res.json(removedDoctor);
+    }catch(err){
+        res.json({message:err});
+    }
+});
 
 //delete doctor collection
 router.delete('/api/doctors',async (req,res)=>{
@@ -41,13 +50,14 @@ router.get('/api/doctors/:id', async (req, res)=>{
     }
 });
 
-//update /create with doctor with  Put
+/*
+//update /create with doctor with  Put !! NOT WORKING
 router.put('/api/doctors/:id', async(req, res)=>{
     try{
         const updatedDoctor= await Doctor.updateOne(
         {_id:req.params.id},
         {$set:{first_name:req.body.first_name}},
-        {$set:{last_name :req.body.last_name}},
+        /*{$set:{last_name :req.body.last_name}},
         {$set:{phoneNumber:req.body.phoneNumber}},
         {$set:{specialist:req.body.specialist}},
         {$set:{email_address:req.body.email_address}}
@@ -56,7 +66,7 @@ router.put('/api/doctors/:id', async(req, res)=>{
     }catch(err){
         res.json({message:err});
     }
-});
+});*/
 
 //update doctor with PATCH method
 router.patch('/api/doctors/:id', async (req, res)=>{
@@ -70,15 +80,7 @@ router.patch('/api/doctors/:id', async (req, res)=>{
     }
 });
 
-//delete the individual doctor
-router.delete('/api/doctors/:id', async (req, res)=>{
-    try{
-        const removedDoctor= await Doctor.remove({_id:req.params.doctorId});
-        res.json(removedDoctor);
-    }catch(err){
-        res.json({message:err});
-    }
-});
+
 
 /*
 //get all doctors with appointment   
