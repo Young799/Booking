@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Patient = require('../models/patient');
 
-//create patient
+//create a patient
 router.post('/api/patients', function(req, res, next){
     var  patient= new Patient(req.body);
     patient.save(function(err, patient) {
@@ -11,7 +11,7 @@ router.post('/api/patients', function(req, res, next){
     })
 }); 
 
-//retrieve patients collection and sorting when addin patients?sortBy=firstName
+//retrieve patients collection and sorting when adding patients?sortBy=firstName in postman
 router.get('/api/patients', function(req,res,next){
     let sort = req.query.sortBy;  
     Patient.find({}).sort(sort).exec(function(err, patients) { 
@@ -24,7 +24,7 @@ router.get('/api/patients', function(req,res,next){
             }); 
     });
 
-//delete patients collection
+//Delete patients collection
 router.delete('/api/patients',async (req, res)=>{
     try{
         const patient=await Patient.remove();
@@ -36,7 +36,6 @@ router.delete('/api/patients',async (req, res)=>{
 
 //get individual patient
 router.get('/api/patients/:id',async (req, res)=>{
-
     try{
         const patient=await Patient.findById({_id:req.params.id});
         res.json(patient);
@@ -47,7 +46,6 @@ router.get('/api/patients/:id',async (req, res)=>{
 
 //Update the individual patient with PUT
 router.put('/api/patients/:id', async(req, res)=>{
-
     try{
         const updatedPatient= await Patient.updateOne(
         {_id:req.params.id},
@@ -56,8 +54,7 @@ router.put('/api/patients/:id', async(req, res)=>{
         {$set:{Phone_number:req.body.Phone_number}},
         {$set:{email_address:req.body.email_address}}
         );
-        res.json(updatedPatient);
-        
+        res.json(updatedPatient); 
     }catch(err){
         res.json({message:err});
     }
@@ -65,7 +62,6 @@ router.put('/api/patients/:id', async(req, res)=>{
 
 //update the individual patient with first
 router.patch('/api/patients/:id', async(req, res)=>{
-
     try{
         const updatedPatient= await Patient.updateOne(
         {_id:req.params.id},

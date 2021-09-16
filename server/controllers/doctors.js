@@ -53,7 +53,6 @@ router.put('/api/doctors/:id', async(req, res)=>{
         {$set:{email_address:req.body.email_address}}
         );
         res.json(updatedDoctor);
-        
     }catch(err){
         res.json({message:err});
     }
@@ -61,7 +60,6 @@ router.put('/api/doctors/:id', async(req, res)=>{
 
 //update doctor with PATCH method
 router.patch('/api/doctors/:id', async (req, res)=>{
-
     try{
         const updatedDoctor=await Doctor.updateOne(
         {_id:req.params.id},

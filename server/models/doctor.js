@@ -1,16 +1,13 @@
-var mongoose=require('mongoose');
-var Schema=mongoose.Schema;
+const mongoose=require('mongoose');
+const Schema=mongoose.Schema;
 
-var doctorSchema=new Schema({
-    
-   // _id: Schema.Types.ObjectId(),
+const doctorSchema=new Schema({
     first_name: String,
     last_name: String,
     personalNumber:Number,
     specialist:String,
     email_address:String,
-    appointment :[{type:Schema.Types.ObjectId,ref: 'appointment '}]
-   
+    appointment :[{type:Schema.Types.ObjectId,ref: 'appointment '}] 
 });
 
 module.exports=mongoose.model('doctor',doctorSchema);
