@@ -80,8 +80,9 @@ router.delete('/api/doctors/:id', async (req, res)=>{
     }
 });
 
+/*
 //get all doctors with appointment   
-router.get('/api/doctors/appointment', async(req,res)=>{
+router.get('/api/doctors/appointments', async(req,res)=>{
     try{
     const doctorsAppointment=await Doctor.find().populate('appointment');
     res.json(doctorsAppointment);
@@ -89,6 +90,6 @@ router.get('/api/doctors/appointment', async(req,res)=>{
     }catch (err){
     res.json({message:err});
 }
-});
+});*/
 
-module.exports = router ;
+module.exports = router;

@@ -8,7 +8,6 @@ var Doctor = require('../models/doctor');
 router.post('/api/patients/:patient_id/appointments', async function(req, res, next){
         const patient=await Patient.findById(req.params.patient_id);
         var  appointment= new Appointment({
-            bookingID:req.body.bookingID,
             appointmentDate:req.body.appointmentDate, 
             time:req.body.time,
             patient: patient,
@@ -50,7 +49,7 @@ router.get('/api/patients/:patient_id/appointments', async function(req, res, ne
         });
     }
     res.status(200).json({ 'appointment': appointment });
-});
+    });
 });
 
 // Getting a specific appointment for one patient 
@@ -88,7 +87,7 @@ router.get('/api/appointments',async (req,res)=>{
             res.json({message:err});
         }
     });
-    
+
 // Deleting all appointments 
 router.delete('/api/appointments',async (req,res)=>{
         try{

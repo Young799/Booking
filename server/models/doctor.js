@@ -7,7 +7,6 @@ const doctorSchema=new Schema({
     personalNumber:Number,
     specialist:String,
     email_address:String,
-    appointment :[{type:Schema.Types.ObjectId,ref: 'appointment '}] 
 });
 
 module.exports=mongoose.model('doctor',doctorSchema);
