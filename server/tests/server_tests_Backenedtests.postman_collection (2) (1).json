@@ -55,7 +55,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/patient/614310761a5dd02a8475f353"
+								"url": "http://localhost:3000/api/patients/614310761a5dd02a8475f353"
 							},
 							"response": []
 						},
@@ -120,7 +120,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/doctor/"
+								"url": "http://localhost:3000/api/doctors/"
 							},
 							"response": []
 						},
@@ -155,7 +155,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/patient/614310761a5dd02a8475f353"
+								"url": "http://localhost:3000/api/patients/614310761a5dd02a8475f353"
 							},
 							"response": []
 						},
@@ -173,7 +173,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/doctor/613cede698ea151480a4fcf0"
+								"url": "http://localhost:3000/api/doctors/613cede698ea151480a4fcf0"
 							},
 							"response": []
 						}
@@ -196,7 +196,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/patient"
+								"url": "http://localhost:3000/api/patients"
 							},
 							"response": []
 						},
@@ -214,7 +214,7 @@
 										}
 									}
 								},
-								"url": "http://localhost:3000/api/doctor/614383859523e149b8a2026b"
+								"url": "http://localhost:3000/api/doctors/614383859523e149b8a2026b"
 							},
 							"response": []
 						},
