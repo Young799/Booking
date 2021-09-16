@@ -11,7 +11,6 @@ router.post('/api/doctors', (req, res, next)=>{
     })
 });
 
-
 //get doctor collection 
 router.get('/api/doctors',async (req,res)=>{
     try{
@@ -21,7 +20,6 @@ router.get('/api/doctors',async (req,res)=>{
         res.json({message:err});
     }
 });
-
 
 //delete doctor collection
 router.delete('/api/doctors',async (req,res)=>{
@@ -33,25 +31,21 @@ router.delete('/api/doctors',async (req,res)=>{
     }
 });
 
-
-
 //get the individual doctor
-router.get('/api/doctors/:doctorId', async (req, res)=>{
+router.get('/api/doctors/:id', async (req, res)=>{
     try{
-        const doctor=await Doctor.findById(req.params.doctorId);
+        const doctor=await Doctor.findById(req.params.id);
         res.json(doctor);
     }catch(err){
         res.json({message:err});
     }
 });
 
-
 //update /create with doctor with  Put
-router.put('/api/doctors/:doctorId', async(req, res)=>{
-
+router.put('/api/doctors/:id', async(req, res)=>{
     try{
         const updatedDoctor= await Doctor.updateOne(
-        {_id:req.params.doctorId},
+        {_id:req.params.id},
         {$set:{first_name:req.body.first_name}},
         {$set:{last_name :req.body.last_name}},
         {$set:{phoneNumber:req.body.phoneNumber}},
@@ -65,13 +59,12 @@ router.put('/api/doctors/:doctorId', async(req, res)=>{
     }
 });
 
-
 //update doctor with PATCH method
-router.patch('/api/doctors/:doctorId', async (req, res)=>{
+router.patch('/api/doctors/:id', async (req, res)=>{
 
     try{
         const updatedDoctor=await Doctor.updateOne(
-        {_id:req.params.doctorId},
+        {_id:req.params.id},
         {$set:{first_name:req.body.first_name}});
         res.json(updatedDoctor);
     }catch(err){
@@ -79,9 +72,8 @@ router.patch('/api/doctors/:doctorId', async (req, res)=>{
     }
 });
 
-
 //delete the individual doctor
-router.delete('/api/doctors/:doctorId', async (req, res)=>{
+router.delete('/api/doctors/:id', async (req, res)=>{
     try{
         const removedDoctor= await Doctor.remove({_id:req.params.doctorId});
         res.json(removedDoctor);
@@ -90,12 +82,8 @@ router.delete('/api/doctors/:doctorId', async (req, res)=>{
     }
 });
 
-
-
-
-//get all doctors with appointment  : 
+//get all doctors with appointment   
 router.get('/api/doctors/appointment', async(req,res)=>{
-
     try{
     const doctorsAppointment=await Doctor.find().populate('appointment');
     res.json(doctorsAppointment);
