@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "1861ba0c-edd8-4900-88e1-9deffb291b55",
+		"name": "Backenedtests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tests",
+			"item": [
+				{
+					"name": "get",
+					"item": [
+						{
+							"name": "getPatient",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/patients/?sortBy=firstName",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"patients",
+										""
+									],
+									"query": [
+										{
+											"key": "sortBy",
+											"value": "firstName"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getDoctor",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/patient/614310761a5dd02a8475f353"
+							},
+							"response": []
+						},
+						{
+							"name": "getAppointment",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/patients/614380289523e149b8a20258/6143853d2e176340880c54c0"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "post",
+					"item": [
+						{
+							"name": "postPatients",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"firstName\": \"Eun young\",\r\n        \"lastName\": \"cho\",\r\n        \"PersonalNumber\": 201898234,\r\n        \"Phone_number\": 123335425,\r\n        \"email_address\": \"\",\r\n        \"appointment\": []\r\n        \r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/patients"
+							},
+							"response": []
+						},
+						{
+							"name": "postDoctors",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"appointment\": [],\r\n       \r\n        \"first_name\": \"Hugh\",\r\n        \"last_name\": \"Grant\",\r\n        \"specialist\": \"Shoulder\",\r\n        \"email_address\": \"hugh@gmail.com\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/doctor/"
+							},
+							"response": []
+						},
+						{
+							"name": "postAppointment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "patch",
+					"item": [
+						{
+							"name": "patchPatient",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"firstName\":\"Luai Nesta\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/patient/614310761a5dd02a8475f353"
+							},
+							"response": []
+						},
+						{
+							"name": "patchDoctor",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"firstName\":\"Toure\"}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/doctor/613cede698ea151480a4fcf0"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"item": [
+						{
+							"name": "deletePatient",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/patient"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteDoctor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/doctor/614383859523e149b8a2026b"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteApppointment",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/patients/614380289523e149b8a20258/appointments/6143853d2e176340880c54c0"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
