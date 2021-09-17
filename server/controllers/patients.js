@@ -25,14 +25,14 @@ router.get('/api/patients', function(req,res,next){
     });
 
 //Delete patients collection
-router.delete('/api/patients',async (req, res)=>{
+/*router.delete('/api/patients',async (req, res)=>{
     try{
         const patient=await Patient.remove();
         res.json(patient);
     }catch(err){
         res.json({message:err});
     }
-});
+});*/
 
 //get individual patient
 router.get('/api/patients/:id',async (req, res)=>{
@@ -45,10 +45,10 @@ router.get('/api/patients/:id',async (req, res)=>{
 });
 
 
-/* Update the individual patient with PUT
+ /*Update the individual patient with PUT
 router.put('/api/patients/:id', async(req, res)=>{
     try{
-        const updatedPatient= await Patient.updateOne(
+        const updatedPatient= await Patient.findOneAndUpdate(
         {_id:req.params.id},
         {$set:{lastName:req.body.lastName}},
         {$set:{PersonalNumber:req.body.PersonalNumber}},

@@ -31,14 +31,14 @@ router.delete('/api/doctors/:id', async (req, res)=>{
 });
 
 //delete doctor collection
-router.delete('/api/doctors',async (req,res)=>{
+/*router.delete('/api/doctors',async (req,res)=>{
     try{
         const doctors=await Doctor.remove();
         res.status(201).json(doctors);
     }catch(err){
         res.json({message:err});
     }
-});
+});*/
 
 //get the individual doctor
 router.get('/api/doctors/:id', async (req, res)=>{

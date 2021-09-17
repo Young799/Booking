@@ -20,8 +20,9 @@ router.post('/api/patients/:patient_id/appointments', async function(req, res, n
     })
 }); 
 
-//For assigning a doctor to an appointment 
+/*For assigning a doctor to an appointment 
 router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
+    
     let doctor = req.params.doctor_id;
   var id = req.params.appointment_id;
   Doctor.findById(doctor, function (err, doctor) {
@@ -29,8 +30,8 @@ router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, 
     if (doctor === null) {
       return res.status(404).json({ 'message': ' Doctor not found' });
     }
-  Appointment.updateOne({ _id: id },{$set:{doctor : doctor}},
-    {$set:{isConfirmed: true}}, function (err, appointment) {
+  Appointment.updateMany({ _id: id },{$set:{doctor : doctor}},{$set:{isConfirmed:true}},
+     function (err, appointment) {
     if (err) { return next(err); }
     if (appointment == null) {
       return res.status(404).json({ 'message': 'Appointment not found' });
@@ -38,7 +39,7 @@ router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, 
     res.json(appointment);
   });
 });
-});
+});*/
 
 // Getting one patients appointments
 router.get('/api/patients/:patient_id/appointments', async function(req, res, next){
