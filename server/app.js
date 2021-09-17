@@ -4,6 +4,10 @@ var morgan = require('morgan');
 var path = require('path');
 var cors = require('cors');
 var history = require('connect-history-api-fallback');
+const bodyParser=require('body-parser');
+const patientRoute=require('./controllers/patients')
+const doctorRoute=require('./controllers/doctors')
+const appointmentRoute=require('./controllers/appointments')
 
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
@@ -19,9 +23,11 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, 
     console.log(`Connected to MongoDB with URI: ${mongoURI}`);
 });
 
+
 // Create Express app
 var app = express();
 // Parse requests of content-type 'application/json'
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // HTTP request logger
@@ -30,18 +36,26 @@ app.use(morgan('dev'));
 app.options('*', cors());
 app.use(cors());
 
-// Import routes
-app.get('/api', function(req, res) {
-    res.json({'message': 'Welcome to your DIT341 backend ExpressJS project!'});
-});
 
+
+
+// Import routes
+app.use(patientRoute);
+app.use(doctorRoute);
+app.use(appointmentRoute);
+    
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {
     res.status(404).json({ 'message': 'Not Found' });
 });
 
+app.get('/api', function(req, res){
+    res.json({'meessage':'this rote is used for unnamn-wait that runs with the npm test commened'})
+})
+
 // Configuration for serving frontend in production mode
 // Support Vuejs HTML 5 history mode
+
 app.use(history());
 // Serve static assets
 var root = path.normalize(__dirname + '/..');
