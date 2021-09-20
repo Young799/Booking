@@ -20,30 +20,32 @@ router.post('/api/patients/:patient_id/appointments', async function(req, res, n
     })
 }); 
 
+/*
 //For assigning a doctor to an appointment !!! FAILING TEST
-/*router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
-    let doctor = req.params.doctor_id;
-    var appointments = await Appointment.find()
-    var id = req.params.appointment_id;
-    var appointment = appointments[id]
+router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
+    const { doctor_id, appointment_id } = req.params;
 
-  Doctor.findById(doctor, function (err, doctor) {
-    if (err) return next(err);
-    if (doctor === null) {
-      return res.status(404).json({ 'message': ' Doctor not found' });
-    }
-  var updated_appointment = {
-       _id: id,
-    "doctor" : doctor,
-    "is_confirmed" : true
-  };
-    if (appointment === null) {
-        res.status(404).json({ 'message': 'Appointment not found' });
-    }
-    appointments[id] = updated_appointment;
-    return res.status(200).json({ 'appointment': updated_appointment});
-  });
+    console.log(req.body)
+
+    Appointment.findById(appointment_id, (error, appointment) => {
+        if (error) return res.status(500).json(error);
+        if (appointment === null) return res.status(404).json({message: `Appointment with id: ${appointment_id} not found`});
+        
+        Doctor.findById(doctor_id, (err, doctor) => {
+            if (err) return res.status(500).json(err);
+            if (doctor === null) return res.status(404).json({ message: 'Doctor not found' });
+            
+            appointment.is_confirmed = true;
+            appointment.doctor = doctor;
+
+            console.log(appointment)
+
+            appointment.save();
+            return res.status(200).json({ 'appointment': appointment});
+          });
+    })
 });*/
+
 
 // Getting one patients appointments
 router.get('/api/patients/:patient_id/appointments', async function(req, res, next){
