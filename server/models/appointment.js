@@ -2,11 +2,11 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
 const appointmentSchema=new Schema({
-    appointmentDate:Date, 
-    Time:Number,
+    appointment_date:Date, 
+    time:Number,
     patient: {type:Schema.Types.ObjectId,ref:'patient'},
     doctor: {type:Schema.Types.ObjectId,ref:'doctor'},
-    isConfirmed:Boolean
+    is_confirmed:Boolean
     });
 
 module.exports=mongoose.model('appointment',appointmentSchema);

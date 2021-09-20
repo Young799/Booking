@@ -8,10 +8,10 @@ var Doctor = require('../models/doctor');
 router.post('/api/patients/:patient_id/appointments', async function(req, res, next){
         const patient=await Patient.findById(req.params.patient_id);
         var  appointment= new Appointment({
-            appointmentDate:req.body.appointmentDate, 
+            appointment_date:req.body.appointmentDate, 
             time:req.body.time,
             patient: patient,
-            isConfirmed:false
+            is_confirmed:false
         });
         appointment.save(function(err, appointment){
         
@@ -20,25 +20,29 @@ router.post('/api/patients/:patient_id/appointments', async function(req, res, n
     })
 }); 
 
-/*For assigning a doctor to an appointment 
-router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
-    
+//For assigning a doctor to an appointment !!! FAILING TEST
+/*router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
     let doctor = req.params.doctor_id;
-  var id = req.params.appointment_id;
+    var appointments = await Appointment.find()
+    var id = req.params.appointment_id;
+    var appointment = appointments[id]
+
   Doctor.findById(doctor, function (err, doctor) {
     if (err) return next(err);
     if (doctor === null) {
       return res.status(404).json({ 'message': ' Doctor not found' });
     }
-  Appointment.updateMany({ _id: id },{$set:{doctor : doctor}},{$set:{isConfirmed:true}},
-     function (err, appointment) {
-    if (err) { return next(err); }
-    if (appointment == null) {
-      return res.status(404).json({ 'message': 'Appointment not found' });
+  var updated_appointment = {
+       _id: id,
+    "doctor" : doctor,
+    "is_confirmed" : true
+  };
+    if (appointment === null) {
+        res.status(404).json({ 'message': 'Appointment not found' });
     }
-    res.json(appointment);
+    appointments[id] = updated_appointment;
+    return res.status(200).json({ 'appointment': updated_appointment});
   });
-});
 });*/
 
 // Getting one patients appointments
@@ -88,15 +92,5 @@ router.get('/api/appointments',async (req,res)=>{
             res.json({message:err});
         }
     });
-
-/* Deleting all appointments 
-router.delete('/api/appointments',async (req,res)=>{
-        try{
-            const appointment=await Appointment.remove();
-            res.status(201).json(appointment);
-        }catch(err){
-            res.json({message:err});
-        }
-    });  */
      
 module.exports=router;

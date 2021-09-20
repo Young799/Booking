@@ -4,9 +4,9 @@ const Schema=mongoose.Schema;
 const doctorSchema=new Schema({
     first_name: String,
     last_name: String,
-    personalNumber:Number,
+    personal_number:Number,
     specialist:String,
-    email_address:String,
+    email_address:String
 });
 
 module.exports=mongoose.model('doctor',doctorSchema);
