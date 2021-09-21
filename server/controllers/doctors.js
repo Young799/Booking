@@ -17,16 +17,16 @@ router.get('/api/doctors',async (req,res)=>{
         const doctors=await Doctor.find();
         res.status(200).json(doctors);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({error:"The doctors are not found"});
     }
 });
 //delete the individual doctor 
 router.delete('/api/doctors/:id', async (req, res)=>{
     try{
         const removed_doctor= await Doctor.remove({_id:req.params.id});
-        res.json(removed_doctor);
+        res.status(200).json(removed_doctor);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({error:"The ID was not found"});
     }
 });
 
@@ -36,7 +36,7 @@ router.delete('/api/doctors',async (req,res)=>{
         const doctors=await Doctor.remove();
         res.status(200).json(doctors);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({message:err});
     }
 });
 
@@ -44,9 +44,9 @@ router.delete('/api/doctors',async (req,res)=>{
 router.get('/api/doctors/:id', async (req, res)=>{
     try{
         const doctor=await Doctor.findById(req.params.id);
-        res.json(doctor);
+        res.status(200).json(doctor);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({error:"The ID was not found"});
     }
 });
 
@@ -64,7 +64,7 @@ router.put('/api/doctors/:id', async(req, res)=>{
     }
     if (!updated_doctor){
         return res.status(404).json({
-            message: "Doctor not found"
+            message: "The doctor is not found"
         });
     }
     doctors[id] = updated_doctor;
@@ -76,9 +76,9 @@ router.patch('/api/doctors/:id', async (req, res)=>{
         const updated_doctor=await Doctor.updateOne(
         {_id:req.params.id},
         {$set:{first_name:req.body.first_name}});
-        res.json(updated_doctor);
+        res.status(200).json(updated_doctor);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({message:err});
     }
 });
 
