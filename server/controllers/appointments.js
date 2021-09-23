@@ -25,13 +25,16 @@ router.post('/api/patients/:patient_id/appointments', async function(req, res, n
 router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
     const { doctor_id, appointment_id } = req.params;
 
-    console.log(req.body)
-
-    Appointment.findById(appointment_id, (error, appointment) => {
+    console.log(req.body);
+    console.log('hej');
+    
+        Appointment.findById(appointment_id, (error, appointment) => {
+        console.log('banana');
         if (error) return res.status(500).json(error);
         if (appointment === null) return res.status(404).json({message: `Appointment with id: ${appointment_id} not found`});
         
         Doctor.findById(doctor_id, (err, doctor) => {
+            console.log('hejhej');
             if (err) return res.status(500).json(err);
             if (doctor === null) return res.status(404).json({ message: 'Doctor not found' });
             
