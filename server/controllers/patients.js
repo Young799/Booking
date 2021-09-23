@@ -17,7 +17,7 @@ router.get('/api/patients', function(req,res,next){
     Patient.find({}).sort(sort).exec(function(err, patients) { 
                 if (!patients) {
                     return res.status(404).json({
-                        message: 'cant find any patients'
+                        message: 'can not find any patients'
                     });
                 }
                 res.status(200).json({'patients': patients });
@@ -28,9 +28,9 @@ router.get('/api/patients', function(req,res,next){
 router.delete('/api/patients',async (req, res)=>{
     try{
         const patients=await Patient.remove();
-        res.json(patients);
+        res.status(200).json(patients);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({message:err});
     }
 });
 
@@ -38,26 +38,32 @@ router.delete('/api/patients',async (req, res)=>{
 router.get('/api/patients/:id',async (req, res)=>{
     try{
         const patient=await Patient.findById({_id:req.params.id});
-        res.json(patient);
+        res.status(200).json(patient);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({message:"Id invalid"});
     }
 });
 
  //Update the individual patient with PUT 
 router.put('/api/patients/:id', async(req, res)=>{
-    var patients = await Patient.find()
-    var id = req.params.id;
-    var updated_patient ={
-    _id:req.params.id,
-    "first_name":req.body.first_name,
-    "last_name" :req.body.last_name,
-    "personal_number":req.body.personal_number,
-    "phone_number":req.body.phone_number,
-    "email_address":req.body.email_address
+    try{
+        var patients = await Patient.find()
+        var id = req.params.id;
+        var updated_patient ={
+        _id:req.params.id,
+        "first_name":req.body.first_name,
+        "last_name" :req.body.last_name,
+        "personal_number":req.body.personal_number,
+        "phone_number":req.body.phone_number,
+        "email_address":req.body.email_address
     }
     patients[id] = updated_patient;
-    res.status(200).json(updated_patient);});
+    res.status(200).json(updated_patient);
+}catch(err){ 
+    res.status(404).json({message:"Id invalid"});
+}
+});
+
 
 //update the individual patient with first  
 router.patch('/api/patients/:id', async(req, res)=>{
@@ -65,8 +71,8 @@ router.patch('/api/patients/:id', async(req, res)=>{
     {_id:req.params.id},
     {$set:{first_name:req.body.first_name}});
     if (!updated_patient){
-        return res.status(404).json({
-            message: "This patient does not exsist"
+        return res.status(204).json({
+            message: "This patient does not exists"
         });
     } 
     res.status(200).json(updated_patient);
@@ -76,9 +82,9 @@ router.patch('/api/patients/:id', async(req, res)=>{
 router.delete('/api/patients/:id', async (req, res)=>{
     try{
         const removed_patient= await Patient.remove({_id:req.params.id});
-        res.json(removed_patient);
+        res.status(200).json(removed_patient);
     }catch(err){
-        res.json({message:err});
+        res.status(404).json({message:"ID invalid"});
     }
 }); 
 
