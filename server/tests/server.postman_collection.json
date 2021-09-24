@@ -12,9 +12,14 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
-							"});"
+							"    \r",
+							"});\r",
+							"\r",
+							"\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"doctor_id\", jsonData._id);"
 						],
 						"type": "text/javascript"
 					}
@@ -54,7 +59,10 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
-							"});"
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"patient_id\", jsonData._id);"
 						],
 						"type": "text/javascript"
 					}
@@ -94,7 +102,10 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
-							"});"
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"appointment_id\", jsonData._id);"
 						],
 						"type": "text/javascript"
 					}
@@ -105,7 +116,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n     \"appointmentDate\": 20121213,\r\n            \"time\" : 2030\r\n}",
+					"raw": "{\r\n     \"appointmentDate\": \"2012-12-13\",\r\n            \"time\" : \"20:30\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -428,6 +439,50 @@
 							"key": "sortBy",
 							"value": "firstName"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/appointments/6143d2177da4c65e6c8202f2/doctors/6143d43e7da4c65e6c82031b",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    });\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/appointments/{{appointment_id}}/doctors/{{doctor_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"appointments",
+						"{{appointment_id}}",
+						"doctors",
+						"{{doctor_id}}"
 					]
 				}
 			},
