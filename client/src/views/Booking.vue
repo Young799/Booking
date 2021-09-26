@@ -1,54 +1,97 @@
 <template>
   <b-container fluid>
-    <h1> Welcome to care4you, Please Enter your booking request </h1>
-    <b-row class="my-1" v-for="type in types" :key="type">
-      <b-col sm="3">
-        <label :for="`type-${type}`">Type <code>{{ type }}</code>:</label>
-      </b-col>
-      <b-col sm="9">
-        <b-form-input :id="`type-${type}`" :type="type"></b-form-input>
-      </b-col>
-    </b-row>
-    <b-dropdown class="m-m2-r" id="dropdown-1" block  menu-class='w-100' variant="outline-secondary" text="Choose the specialist" >
-    <b-dropdown-item>Pediatrician</b-dropdown-item>
-    <b-dropdown-item>Dermatologist</b-dropdown-item>
-    <b-dropdown-item>Psychiatrist</b-dropdown-item>
-    <b-dropdown-item>Orthopedist</b-dropdown-item>
-    <b-dropdown-item>Gynecologist</b-dropdown-item>
-    <b-dropdown-item>Surgeon</b-dropdown-item>
-  </b-dropdown>
-  <div>
-    <b-form-checkbox
-      id="checkbox-1"
-      name="checkbox-1"
-    >
-      I accept the terms and use
-    </b-form-checkbox>
-  </div>
+    <span><body>
+      <form>
+          <div class="container">
+            <h2>  To update your personal info,fill out the field and click the save. </h2>
+            <div class="row pt-4">
+                <div class="col-md-6">
+                    <label for="firstname">First name:</label>
+                    <input type="text" class="form-control" placeholder="Enter your first name" required>
+                </div>
+                <div class="col-md">
+                    <label for="lastname">Last name:</label>
+                    <input type="text" class="form-control" placeholder="Enter your last name" required>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-md-6">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" placeholder="Enter your email address" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="tel">Tel:</label>
+                    <input type="tel" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-12">
+                    <label for="addrline1">New password:</label>
+                    <input type="text" class="form-control" placeholder="Enter your new password" required>
+                </div>
+            </div>
+            <div class="row pt-2">
+                <div class="col-12">
+                    <label for="addrline2">Enter new password again:</label>
+                    <input type="text" class="form-control" placeholder="">
+                </div>
+            </div>
+            <div class="row pt-4 float-right">
+                <buton type="submit" class="btn btn-primary">save</buton>
+            </div>
+            <div class="col-md-6">
+                  <label for="gender">Gender:</label><br>
+                  <input type="radio" name="gender"> Male
+                  <input type="radio" name="gender"> Female
+              </div>
+              <hr class="myhrline">
 
-  <b-button variant="primary">Submit</b-button>
-  </b-container>
+            <h2>  Enter your request here ,we contact you within 48 hours. </h2>
+              <div class="row pt-2">
+                <div class="col-12">
+                    <label for="addrline2">Enter your wished booking date:</label>
+                    <input type="text" class="form-control" placeholder="dd-mm-yyyy">
+                </div>
+                <div class="col-12">
+                    <label for="addrline2">Enter your wished booking time:</label>
+                    <input type="text" class="form-control" placeholder="hh-mm">
+                </div>
+                <div class="row pt-4 float-right">
+                <buton type="submit" class="btn btn-primary">request</buton>
+              </div>
+        </div>
+        </div>
+      </form>
+        </body></span>
+
+                <div>
+                  <CalendarWidget />
+                </div>
+
+    </b-container>
+
 </template>
 
 <script>
+import CalendarWidget from '../components/CalendarWidget.vue'
 export default {
-  data() {
-    return {
-      types: [
-        'Name',
-        'Phone_Number',
-        'Email',
-        'Specialist',
-        'date',
-        'time'
 
-      ]
-    }
+  name: 'App',
+  components: {
+    CalendarWidget
   }
 }
 
 </script>
 
 <style>
-
+ .container {
+     max-width: 500px;
+ }
+ .spacer{
+   height:100px;
+ }
+ hr.myhrline{
+     margin: 40px;
+ }
 </style>

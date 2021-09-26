@@ -54,4 +54,31 @@ export default {
 .btn_message {
   margin-bottom: 1em;
 }
+img {
+    width: 50%; /*image width*/
+    float: left; /*image position*/
+    border-radius: 50%;
+    margin-top:10px;
+  }
+  p {
+    margin-top:10px ;
+    width: 50%;
+    float: right;
+  }
+  .alex{
+   margin-top: 200px;
+  }
+  .mari{
+   margin-top: 250px;
+  }
+  .heli{
+   margin-top: 270px;
+  }
+  .ann{
+   margin-top: 270px;
+  }
+  .main{
+    margin-top: 1000px;
+  }
+
 </style>

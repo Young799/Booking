@@ -1,6 +1,7 @@
 <template>
   <div>
-          <div class="form">
+           <div class="form" @submit.prevent="handlesubmit">
+             <form >
       <div class="title">Welcome</div>
       <div class="subtitle">Let's create your account!</div>
       <div class="input-container ic1">
@@ -23,23 +24,25 @@
         <div class="cut"></div>
         <label for="password" class="placeholder">password</label>
       </div>
+      <!--<div v-if="passwordError" class="error" {{ passwordError }}></div>-->
       <div class="input-container ic1">
         <input id="confirm password" class="input" type="password" placeholder=" " required v-model="confirmpassword" />
         <div class="cut"></div>
         <label for="password" class="placeholder">confirm password</label>
       </div>
-      <select v-model="gender">
+     <!-- <select v-model="gender">
       <option value="male">Male</option>
       <option value="fmale">Fmale</option>
-      </select>
+      </select>-->
       <button type="text" class="submit">submit</button>
+      </form>
     </div>
     <p>{{firstname}}</p>
     <p>{{lastname}}</p>
     <p>{{email}}</p>
     <p>{{password}}</p>
     <p>{{confirmpassword}}</p>
-    <p>{{role}}</p>
+
   </div>
 </template>
 
@@ -55,19 +58,28 @@ export default {
       lastname: '',
       email: '',
       password: '',
-      confirmpassword: '',
-      role: ''
+      confirmpassword: ''
     }
   },
   methods: {
-    getMessage() {
-      Api.get('/')
-        .then(response => {
-          this.message = response.data.message
+    async handlesubmit() {
+      try {
+        await Api.post('/', {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+          password: this.password
+          // confirmpassword: this.confirmpassword
+
         })
-        .catch(error => {
-          this.message = error
-        })
+      } catch (err) {
+        console.log(err)
+      }
+      // validate password
+      this.$router.push('/login')
+      this.wordError = this.password.length > 5
+        ? ''
+        : 'password must be of 6 characters long'
     }
   }
 }
