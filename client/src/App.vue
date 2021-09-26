@@ -1,7 +1,14 @@
 <template>
   <div id="app">
     <div id="nav">
+<<<<<<< Updated upstream
       <router-link to="/">Home</router-link>
+=======
+      <router-link to="/" class="home">Home</router-link>
+      <router-link to="/login">Login</router-link>>|
+      <router-link to="/logout">Log out</router-link>
+      <router-link to="/register" class="sign">Signup</router-link>
+>>>>>>> Stashed changes
     </div>
     <!-- Render the content of the current page view -->
     <router-view/>
