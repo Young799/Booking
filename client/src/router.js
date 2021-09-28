@@ -5,6 +5,7 @@ import Register from './views/register.vue'
 import Login from './views/login.vue'
 import Booking from './views/Booking.vue'
 import Logout from './views/Logout.vue'
+import Admin from './views/Admin.vue'
 
 Vue.use(Router)
 
@@ -38,6 +39,11 @@ export default new Router({
       name: 'logout',
       component: Logout
 
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin
     }
 
   ]

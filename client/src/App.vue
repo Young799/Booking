@@ -66,7 +66,7 @@
 #nav{
   background-color: #2c3e50;
   height: 50px;
-  margin-top: 5px;
+  margin-top: 0px;
 }
 .home{
   margin-right: 1070px;
