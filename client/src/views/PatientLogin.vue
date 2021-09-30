@@ -1,77 +1,71 @@
 <template>
   <div>
-           <div class="form" @submit.prevent="handlesubmit">
-             <form >
+    <div class="form">
       <div class="title">Welcome</div>
-      <div class="subtitle">Let's create your account!</div>
-      <div class="input-container ic1">
-        <input id="firstname" class="input" type="text" placeholder=" " required v-model="firstname"/>
-        <div class="cut"></div>
-        <label for="firstname" class="placeholder">First name</label>
-      </div>
+      <div class="subtitle">Log in to your account!</div>
       <div class="input-container ic2">
-        <input id="lastname" class="input" type="text" placeholder=" " required v-model="lastname" />
-        <div class="cut"></div>
-        <label for="lastname" class="placeholder">Last name</label>
-      </div>
-      <div class="input-container ic1">
-        <input id="email" class="input" type="email" placeholder=" " required v-model="email" />
+        <input
+          id="email"
+          class="input"
+          type="email"
+          v-model="email"
+          placeholder=" "
+        />
         <div class="cut"></div>
         <label for="email" class="placeholder">Email</label>
       </div>
       <div class="input-container ic1">
-        <input id="password" class="input" type="password" placeholder=" " required v-model="password" />
+        <input
+          id="password"
+          class="input"
+          type="password"
+          v-model="password"
+          placeholder=" "
+        />
         <div class="cut"></div>
         <label for="password" class="placeholder">password</label>
       </div>
-      <!--<div v-if="passwordError" class="error" {{ passwordError }}></div>-->
-      <div class="input-container ic1">
-        <input id="confirm password" class="input" type="password" placeholder=" " required v-model="confirmpassword" />
-        <div class="cut"></div>
-        <label for="password" class="placeholder">confirm password</label>
-      </div>
-     <!-- <select v-model="gender">
-      <option value="male">Male</option>
-      <option value="fmale">Fmale</option>
-      </select>-->
-      <button type="text" class="submit">submit</button>
-      </form>
+      <button type="text" class="submit" v-on:click="login">Log In</button>
+      <button id="doctorLogin" @click="doctorLogin">Doctor Log In</button>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import { Api } from '@/Api'
 
 export default {
-  name: 'register',
+  name: 'login',
   data() {
     return {
-      firstname: '',
-      lastname: '',
       email: '',
-      password: '',
-      confirmpassword: ''
+      password: ''
     }
   },
   methods: {
-    async handlesubmit() {
-      try {
-        await Api.post('/', {
-          firstname: this.firstname,
-          lastname: this.lastname,
-          email: this.email,
-          password: this.password
+    // not filter .showing all paitent collection
+    login() {
+      console.warn(this.email, this.password)
+      Api.post('/login', {
+        email_address: this.email,
+        password: this.password
+      })
+        .then((response) => {
+          if (
+            this.email === response.data.email_address ||
+            this.password === response.data.password
+          ) {
+            alert(response.data._id)
+            const userId = response.data._id
+            this.$router.push(`/booking/${userId}`)
+          }
         })
-      } catch (err) {
-        console.log(err)
-      }
-      // validate password
-      this.$router.push('/login')
-      this.wordError = this.password.length > 5
-        ? ''
-        : 'password must be of 6 characters long'
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    doctorLogin() {
+      this.$router.push('/doctorlogin')
     }
   }
 }
@@ -83,17 +77,15 @@ body {
   background-color: #000;
   display: flex;
   justify-content: center;
-  height: 100vh
+  height: 100vh;
 }
-
 .form {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 700px;
-  padding: 20px;
-  width: 100%;
-  margin-left: 400px ;
+  height: 450px;
+  width: 1000px;
+  margin-left: 400px;
   margin-top: 20px;
 }
 
@@ -102,7 +94,7 @@ body {
   font-family: sans-serif;
   font-size: 36px;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .subtitle {
@@ -110,7 +102,7 @@ body {
   font-family: sans-serif;
   font-size: 16px;
   font-weight: 600;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .input-container {
@@ -170,7 +162,7 @@ body {
   position: absolute;
   transform-origin: 0 50%;
   transition: transform 200ms, color 200ms;
-  top: 25px;
+  top: 20px;
 }
 
 .input:focus ~ .placeholder,
@@ -185,7 +177,6 @@ body {
 .input:focus ~ .placeholder {
   color: #dc2f55;
 }
-
 .submit {
   background-color: #08d;
   border-radius: 12px;
@@ -194,15 +185,27 @@ body {
   color: #eee;
   cursor: pointer;
   font-size: 18px;
-  height: 50px;
+  height: 35px;
   margin-top: 38px;
   text-align: center;
-  width: 80%;
-  margin-left: 50px;
+  width: 45%;
 }
 
 .submit:active {
   background-color: #06b;
 }
-
+#doctorLogin {
+  background-color: rgb(202, 197, 197);
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: rgb(48, 47, 47);
+  cursor: pointer;
+  font-size: 18px;
+  height: 35px;
+  margin-top: 38px;
+  margin-left: 35px;
+  text-align: center;
+  width: 45%;
+}
 </style>

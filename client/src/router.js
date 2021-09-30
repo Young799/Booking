@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Register from './views/register.vue'
-import Login from './views/login.vue'
+import PatientLogin from './views/PatientLogin.vue'
 import Booking from './views/Booking.vue'
 import Logout from './views/Logout.vue'
-import Admin from './views/Admin.vue'
+import Doctor from './views/Doctor.vue'
+import DoctorLogin from './views/DoctorLogin.vue'
+import Appointment from './views/Appointment.vue'
 
 Vue.use(Router)
 
@@ -24,9 +26,9 @@ export default new Router({
       component: Register
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login
+      path: '/patientlogin',
+      name: 'patientlogin',
+      component: PatientLogin
     },
     {
       path: '/booking',
@@ -41,10 +43,19 @@ export default new Router({
 
     },
     {
-      path: '/admin',
-      name: 'admin',
-      component: Admin
+      path: '/doctor',
+      name: 'doctor',
+      component: Doctor
+    },
+    {
+      path: '/doctorlogin',
+      name: 'doctorlogin',
+      component: DoctorLogin
+    },
+    {
+      path: '/appointments',
+      name: 'appointments',
+      component: Appointment
     }
-
   ]
 })

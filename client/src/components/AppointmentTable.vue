@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="Table">
+    <div class="AppointmentTable">
       <table>
         <thead>
           <tr>

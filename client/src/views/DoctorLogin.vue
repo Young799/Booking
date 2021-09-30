@@ -1,47 +1,69 @@
 <template>
   <div>
-      <div class="form">
+    <div class="form">
       <div class="title">Welcome</div>
       <div class="subtitle">Log in to your account!</div>
       <div class="input-container ic2">
-        <input id="Email" class="input" type="email" placeholder=" " />
+        <input
+          id="email"
+          class="input"
+          type="email"
+          v-model="email"
+          placeholder=" "
+        />
         <div class="cut"></div>
         <label for="email" class="placeholder">Email</label>
       </div>
       <div class="input-container ic1">
-        <input id="password" class="input" type="password" placeholder=" " />
+        <input
+          id="password"
+          class="input"
+          type="password"
+          v-model="password"
+          placeholder=" "
+        />
         <div class="cut"></div>
         <label for="password" class="placeholder">password</label>
       </div>
-      <button type="text" class="submit" v-on:click="$router.push('booking')">submit </button>
+      <button type="text" class="submit" v-on:click="login">Log In</button>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import { Api } from '@/Api'
 
 export default {
   name: 'login',
   data() {
     return {
-      message: 'none'
+      email: '',
+      password: ''
     }
   },
   methods: {
-    getMessage() {
-      Api.get('/login')
-        .then(response => {
-          this.message = response.data.message
+    // not filter .showing all paitent collection
+    login() {
+      console.warn(this.email, this.password)
+      Api.post('/logindoctors', {
+        email_address: this.email,
+        password: this.password
+      })
+        .then((response) => {
+          if (
+            this.email === response.data.email_address ||
+            this.password === response.data.password
+          ) {
+            alert(response.data._id)
+            const doctorId = response.data._id
+            this.$router.push(`/doctor/${doctorId}`)
+          }
         })
-        .catch(error => {
-          this.message = error
+        .catch((error) => {
+          console.log(error)
         })
     }
-
   }
-
 }
 </script>
 
@@ -61,7 +83,7 @@ body {
   height: 500px;
   padding: 20px;
   width: 320px;
-  margin-left: 400px ;
+  margin-left: 400px;
   margin-top: 20px;
 }
 
