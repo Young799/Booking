@@ -9,7 +9,30 @@ router.post('/api/patients', function(req, res, next){
         if (err) { return next(err); }
         res.status(201).json(patient);
     })
-}); 
+});
+
+//login a patient
+router.post('/api/login', function (req, res) {
+    // validate before logingin a patient
+    const email = req.body.email_address;
+    const password = req.body.password;
+    // checking if patient exists in the database
+    Patient.findOne({email_address : email }, function (err, foundPatient) {
+       if(err){
+           console.log(err);
+       }else{
+       if (foundPatient) {
+            if (foundPatient.password === password) {
+                res.status(201).json(foundPatient)
+            }else{
+                return res.status(404).json({ 'message': 'Incorrect password' })
+            }
+        }else{
+            return res.status(404).json({ 'message': 'Incorrect Email' })
+        }
+    }
+    });    
+   });
 
 //retrieve patients collection and sorting when adding ?sortBy=lastName in postman
 router.get('/api/patients', function(req,res,next){

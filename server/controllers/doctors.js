@@ -11,6 +11,29 @@ router.post('/api/doctors', (req, res, next)=>{
     })
 });
 
+//login a patient
+router.post('/api/logindoctors', function (req, res) {
+    // validate before logingin a patient
+    const email = req.body.email_address;
+    const password = req.body.password;
+    // checking if patient exists in the database
+    Doctor.findOne({email_address : email }, function (err, foundDoctor) {
+       if(err){
+           console.log(err);
+       }else{
+       if (foundDoctor) {
+            if (foundDoctor.password === password) {
+                res.status(201).json(foundDoctor)
+            }else{
+                return res.status(404).json({ 'message': 'Incorrect password' })
+            }
+        }else{
+            return res.status(404).json({ 'message': 'Incorrect Email' })
+        }
+    }
+    });    
+   });
+
 //get doctor collection 
 router.get('/api/doctors',async (req,res)=>{
     try{
