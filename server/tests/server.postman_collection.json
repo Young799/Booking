@@ -16,8 +16,6 @@
 							"    pm.response.to.have.status(201);\r",
 							"    \r",
 							"});\r",
-							"\r",
-							"\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.environment.set(\"doctor_id\", jsonData._id);"
 						],
@@ -30,7 +28,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \r\n   \"first_name\": \"Luai\",\r\n    \"last_name\": \"obaid\",\r\n    \"personalNumber\":19410408,\r\n    \"specialist\":\"surgeon\",\r\n    \"email_address\":\"Luai@gmail.com\"\r\n}",
+					"raw": "{\r\n   \r\n    \"first_name\": \"Luai\",\r\n    \"last_name\": \"obaid\",\r\n    \"personal_number\":19410408,\r\n    \"specialist\":\"surgeon\",\r\n    \"email_address\":\"Luai@gmail.com\",\r\n    \"password\" : \"123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -60,7 +58,6 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
-							"\r",
 							"var jsonData = pm.response.json();\r",
 							"    pm.environment.set(\"patient_id\", jsonData._id);"
 						],
@@ -73,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"firstName\": \"lisa\",\r\n            \"lastName\": \"sand\",\r\n            \"PersonalNumber\": 198603047892,\r\n            \"Phone_number\": 788234345,\r\n            \"email_address\": \"lisa@gmail.com\"\r\n}",
+					"raw": "{\r\n    \"first_name\": \"Erik\",\r\n            \"last_name\": \"sand\",\r\n            \"personal_number\": 198603047892,\r\n            \"phone_number\": 788234345,\r\n            \"email_address\": \"erik@gmail.com\",\r\n            \"password\": \"1234\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -94,7 +91,47 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients/61431d502bb9d14bbc17e765/appointments",
+			"name": "localhost:3000/api/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"email_address\": \"erik@gmail.com\",\r\n            \"password\" : \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3000/api/appointments",
 			"event": [
 				{
 					"listen": "test",
@@ -103,7 +140,6 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
-							"\r",
 							"var jsonData = pm.response.json();\r",
 							"    pm.environment.set(\"appointment_id\", jsonData._id);"
 						],
@@ -116,7 +152,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n     \"appointmentDate\": \"2012-12-13\",\r\n            \"time\" : \"20:30\"\r\n}",
+					"raw": "{\r\n\"appointment_date\":\"2021-10-10\",\r\n\"time\":\"10.30\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,6 +169,46 @@
 						"patients",
 						"{{patient_id}}",
 						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/api/logindoctors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email_address\": \"Luai@gmail.com\",\r\n        \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/logindoctors",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"logindoctors"
 					]
 				}
 			},
@@ -161,12 +237,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/api",
+					"raw": "{{host}}/api/appointments",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
-						"api"
+						"api",
+						"appointments"
 					]
 				}
 			},
@@ -236,38 +313,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/appointments",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/api/appointments",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"appointments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:3000/api/patients",
+			"name": "{{host}}/api/patients?email_address=abc@gmail.com&password=123456",
 			"event": [
 				{
 					"listen": "test",
@@ -289,7 +335,12 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "{{host}}/api/patients",
@@ -305,7 +356,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients?sortBy=firstName",
+			"name": "localhost:3000/api/patients?filter=email_address&password",
 			"event": [
 				{
 					"listen": "test",
@@ -323,19 +374,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/api/patients?sortBy=lastName",
+					"raw": "{{host}}/api/patients",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
 						"patients"
-					],
-					"query": [
-						{
-							"key": "sortBy",
-							"value": "lastName"
-						}
 					]
 				}
 			},

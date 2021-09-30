@@ -6,7 +6,8 @@ const patientSchema = new Schema({
     last_name: String,
     personal_number: Number,
     phone_number: Number,
-    email_address:String
+    email_address:String,
+    password: String
 });
 
 module.exports = mongoose.model('patient', patientSchema);
