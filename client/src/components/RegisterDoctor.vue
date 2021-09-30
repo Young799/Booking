@@ -1,6 +1,6 @@
 <template>
   <div class="RegisterDoctor">
-    <form class="form" @submit.prevent="handleSubmit">
+    <form class="formOne" @submit.prevent="handleSubmit">
       <label>First name:</label>
       <input type="firstname" required v-model="firstname" />
       <label>Last name:</label>
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style>
-.form {
+.formOne {
   max-width: 420px;
   background: #ffffff;
   text-align: left;

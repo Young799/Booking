@@ -1,6 +1,6 @@
 <template>
   <div>
-           <div class="form" @submit.prevent="handlesubmit">
+           <div class="formTwo" @submit.prevent="handlesubmit">
              <form >
       <div class="title">Welcome</div>
       <div class="subtitle">Let's create your account!</div>
@@ -86,14 +86,15 @@ body {
   height: 100vh
 }
 
-.form {
+.formTwo {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
   height: 700px;
   padding: 20px;
-  width: 100%;
-  margin-left: 400px ;
+  width: 600px;
+  margin: left;
+  margin: right;
   margin-top: 20px;
 }
 

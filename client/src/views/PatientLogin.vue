@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="form">
+    <div class="formThree">
       <div class="title">Welcome</div>
       <div class="subtitle">Log in to your account!</div>
       <div class="input-container ic2">
@@ -79,14 +79,14 @@ body {
   justify-content: center;
   height: 100vh;
 }
-.form {
+.formThree {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
   height: 450px;
-  width: 1000px;
-  margin-left: 400px;
-  margin-top: 20px;
+  width: 600px;
+  margin: left;
+  margin: right;
 }
 
 .title {
