@@ -29,6 +29,9 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/logout">Log Out</router-link>
           </li>
+           <li class="nav-item">
+            <router-link class="nav-link" to="/appointments">Appointments</router-link>
+          </li>
         </ul>
       </div>
     </nav>

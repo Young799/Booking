@@ -93,8 +93,7 @@ body {
   height: 700px;
   padding: 20px;
   width: 600px;
-  margin: left;
-  margin: right;
+  margin: 30px auto;
   margin-top: 20px;
 }
 
@@ -199,7 +198,7 @@ body {
   margin-top: 38px;
   text-align: center;
   width: 80%;
-  margin-left: 50px;
+ margin: 30px auto;
 }
 
 .submit:active {

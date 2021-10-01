@@ -23,7 +23,7 @@
 
 <script>
 import RegisterDoctor from '../components/RegisterDoctor.vue'
-import Table from '../components/Table.vue'
+import Table from '../components/DoctorTable.vue'
 import { Api } from '@/Api'
 export default {
   components: {

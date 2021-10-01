@@ -71,7 +71,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 body {
   align-items: center;
   background-color: #000;
@@ -79,14 +79,16 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
 .formThree {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 450px;
-  width: 600px;
-  margin: left;
-  margin: right;
+  height: 500px;
+  padding: 20px;
+  width: 320px;
+  margin: 30px auto;
+  margin-top: 20px;
 }
 
 .title {
@@ -177,6 +179,7 @@ body {
 .input:focus ~ .placeholder {
   color: #dc2f55;
 }
+
 .submit {
   background-color: #08d;
   border-radius: 12px;
@@ -202,10 +205,10 @@ body {
   color: rgb(48, 47, 47);
   cursor: pointer;
   font-size: 18px;
-  height: 35px;
-  margin-top: 38px;
-  margin-left: 35px;
+  height: 40px;
+  margin-top: 25px;
   text-align: center;
-  width: 45%;
+  width: 100%;
 }
+
 </style>

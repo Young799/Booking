@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="Table">
-      <table>
+    <div class="DoctorTable">
+      <table class="doctorTable">
         <thead>
           <tr>
-            <th v-for="(obj, ind) in config" :key="ind">{{ obj.title }}</th>
+            <th class="doctorTh" v-for="(obj, ind) in config" :key="ind">{{ obj.title }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(row, index) in theData" :key="index">
+          <tr class="doctorTr" v-for="(row, index) in theData" :key="index">
             <td v-for="(obj, ind) in config" :key="ind">
               {{ row[obj.key] }}
               <span v-if="obj.typ === 'text'">{{ row[obj.key] }}</span>
@@ -27,19 +27,19 @@ export default {
 </script>
 
 <style>
-.Table {
+.DoctorTable {
   border-radius: 4px;
   overflow: auto;
   width: 100%;
   margin: 30px auto;
   max-height: 686px;
 }
-table {
+.doctorTable {
   border-collapse: collapse;
   color: #333;
   width: 100%;
 }
-th {
+.doctorTh {
   background: rgba(86, 121, 100, 0.445);
   position: sticky;
   top: 0;
@@ -50,7 +50,7 @@ th {
   text-transform: uppercase;
   font-weight: bold;
 }
-td {
+.doctorTr {
     background: white;
   padding: 5px 5px;
   text-align: center;
