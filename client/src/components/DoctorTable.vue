@@ -30,7 +30,7 @@ export default {
 .DoctorTable {
   border-radius: 4px;
   overflow: auto;
-  width: 100%;
+  width: 1100px;
   margin: 30px auto;
   max-height: 686px;
 }

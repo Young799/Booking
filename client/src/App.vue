@@ -19,18 +19,13 @@
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/register">Register</router-link>
+            <router-link class="nav-link" to="/patients">Patients</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/patientlogin"
-              >Log In</router-link
-            >
+            <router-link class="nav-link" to="/doctors">Doctors</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item-log-out">
             <router-link class="nav-link" to="/logout">Log Out</router-link>
-          </li>
-           <li class="nav-item">
-            <router-link class="nav-link" to="/appointments">Appointments</router-link>
           </li>
         </ul>
       </div>
@@ -62,5 +57,9 @@ export default {
 html,
 .body {
   background-color: #eee;
+}
+
+.nav-item-log-out {
+  margin-left: 750px;
 }
 </style>

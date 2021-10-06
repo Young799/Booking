@@ -2,33 +2,39 @@
   <div>
     <main>
       <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <RegisterDoctor />
-    </div>
-    <div class="col-s">
-     <Table
-        v-if="tableData"
-        :theData="tableData"
-        :config="config"
-        :style="{ height: '50%' }"
-      />
-    </div>
-     </div>
+        <div class="row">
+            <Table
+              v-if="tableData"
+              :theData="tableData"
+              :config="config"
+              :style="{ height: '50%' }"
+            />
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <button id="deleteButton" @click="deleteDoctors">
+              Delete doctors
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <AppointmentTable />
+          </div>
+        </div>
       </div>
     </main>
-    <button id="deleteButton" @click="deleteDoctors">Delete doctors</button>
   </div>
 </template>
 
 <script>
-import RegisterDoctor from '../components/RegisterDoctor.vue'
 import Table from '../components/DoctorTable.vue'
+import AppointmentTable from '../components/AppointmentTable.vue'
 import { Api } from '@/Api'
 export default {
   components: {
-    RegisterDoctor,
-    Table
+    Table,
+    AppointmentTable
   },
   data: () => ({
     tableData: undefined,

@@ -4,25 +4,37 @@
              <form >
       <div class="title">Welcome</div>
       <div class="subtitle">Let's create your account!</div>
+      <div class="row pt-2">
+        <div class="col-md">
       <div class="input-container ic1">
         <input id="firstname" class="input" type="text" placeholder=" " required v-model="firstname"/>
         <div class="cut"></div>
         <label for="firstname" class="placeholder">First name</label>
       </div>
+      </div>
+      <div class="col-md">
       <div class="input-container ic2">
         <input id="lastname" class="input" type="text" placeholder=" " required v-model="lastname" />
         <div class="cut"></div>
         <label for="lastname" class="placeholder">Last name</label>
       </div>
+      </div>
+      </div>
+       <div class="row pt-2">
+        <div class="col-md">
       <div class="input-container ic1">
         <input id="email" class="input" type="email" placeholder=" " required v-model="email" />
         <div class="cut"></div>
         <label for="email" class="placeholder">Email</label>
+         </div>
       </div>
+       <div class="col-md">
       <div class="input-container ic1">
         <input id="password" class="input" type="password" placeholder=" " required v-model="password" />
         <div class="cut"></div>
         <label for="password" class="placeholder">password</label>
+      </div>
+      </div>
       </div>
       <!--<div v-if="passwordError" class="error" {{ passwordError }}></div>-->
       <div class="input-container ic1">
@@ -30,11 +42,16 @@
         <div class="cut"></div>
         <label for="password" class="placeholder">confirm password</label>
       </div>
-     <!-- <select v-model="gender">
-      <option value="male">Male</option>
-      <option value="fmale">Fmale</option>
-      </select>-->
+       <div class="row pt-2">
+        <div class="col-6">
       <button type="text" class="submit">submit</button>
+        </div>
+          <div class="col-md">
+         <button @click="patientLogin" id="login-patient" class="float-md-none">
+              Log In
+            </button>
+          </div>
+          </div>
       </form>
     </div>
   </div>
@@ -48,30 +65,36 @@ export default {
   name: 'register',
   data() {
     return {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: '',
-      confirmpassword: ''
+      patient: {
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: '',
+        confirmpassword: ''
+      }
     }
   },
   methods: {
-    async handlesubmit() {
-      try {
-        await Api.post('/', {
-          firstname: this.firstname,
-          lastname: this.lastname,
-          email: this.email,
-          password: this.password
+    handlesubmit() {
+      Api.post('/patients', {
+        first_name: this.firstname,
+        last_name: this.lastname,
+        email_address: this.email,
+        password: this.password,
+        confirmPassword: this.confirmpassword
+      })
+        .then(response => {
+          alert('You are now registered')
+          // if (result.status === 201) {
+          this.$router.push('/login')
+          // }
         })
-      } catch (err) {
-        console.log(err)
-      }
-      // validate password
-      this.$router.push('/login')
-      this.wordError = this.password.length > 5
-        ? ''
-        : 'password must be of 6 characters long'
+        .catch(error => {
+          alert(error)
+        })
+    },
+    patientLogin() {
+      this.$router.push('/patients/login')
     }
   }
 }
@@ -83,16 +106,16 @@ body {
   background-color: #000;
   display: flex;
   justify-content: center;
-  height: 100vh
+  height: 100vh;
 }
 
 .formTwo {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 700px;
+  height: 500px;
   padding: 20px;
-  width: 600px;
+  width: 900px;
   margin: 30px auto;
   margin-top: 20px;
 }
@@ -120,7 +143,7 @@ body {
 }
 
 .ic1 {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .ic2 {
@@ -137,7 +160,7 @@ body {
   height: 100%;
   outline: 0;
   padding: 4px 20px 0;
-  width: 100%;
+  width: 80%;
 }
 
 .cut {
@@ -150,6 +173,7 @@ body {
   transform: translateY(0);
   transition: transform 200ms;
   width: 76px;
+  margin-left: 30px;
 }
 
 .cut-short {
@@ -171,6 +195,7 @@ body {
   transform-origin: 0 50%;
   transition: transform 200ms, color 200ms;
   top: 25px;
+  margin-left: 30px;
 }
 
 .input:focus ~ .placeholder,
@@ -187,22 +212,36 @@ body {
 }
 
 .submit {
-  background-color: #08d;
-  border-radius: 12px;
+   background: #415c96;
   border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  cursor: pointer;
-  font-size: 18px;
-  height: 50px;
-  margin-top: 38px;
-  text-align: center;
-  width: 80%;
- margin: 30px auto;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 50%;
+  margin: 30px auto;
 }
 
 .submit:active {
-  background-color: #06b;
+  background-color: rgb(115, 126, 134);
 }
-
+#login-patient {
+  background: #415c96;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 50%;
+  margin: 30px auto;
+  height: 40px;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="form">
-      <div class="title">Welcome</div>
+    <div class="formFour">
+      <div class="Welcometitle">Welcome</div>
       <div class="subtitle">Log in to your account!</div>
       <div class="input-container ic2">
         <input
@@ -25,16 +25,15 @@
         <div class="cut"></div>
         <label for="password" class="placeholder">password</label>
       </div>
-      <button type="text" class="submit" v-on:click="login">Log In</button>
+      <button type="text" class="submit" v-on:click="loginDoctor">Log In</button>
     </div>
   </div>
 </template>
 
 <script>
 import { Api } from '@/Api'
-
 export default {
-  name: 'login',
+  name: 'doctorlogin',
   data() {
     return {
       email: '',
@@ -43,7 +42,7 @@ export default {
   },
   methods: {
     // not filter .showing all paitent collection
-    login() {
+    loginDoctor() {
       console.warn(this.email, this.password)
       Api.post('/logindoctors', {
         email_address: this.email,
@@ -56,7 +55,7 @@ export default {
           ) {
             alert(response.data._id)
             const doctorId = response.data._id
-            this.$router.push(`/doctor/${doctorId}`)
+            this.$router.push(`/doc/${doctorId}`)
           }
         })
         .catch((error) => {
@@ -75,19 +74,17 @@ body {
   justify-content: center;
   height: 100vh;
 }
-
-.form {
+.formFour {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 500px;
+  height: 450px;
   padding: 20px;
-  width: 320px;
-  margin-left: 400px;
-  margin-top: 20px;
+  width: 700px;
+  margin: 30px auto;
 }
 
-.title {
+.Welcometitle {
   color: #eee;
   font-family: sans-serif;
   font-size: 36px;
@@ -110,7 +107,7 @@ body {
 }
 
 .ic1 {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .ic2 {
@@ -127,7 +124,8 @@ body {
   height: 100%;
   outline: 0;
   padding: 4px 20px 0;
-  width: 100%;
+  width: 70%;
+   margin: 30px auto;
 }
 
 .cut {
@@ -140,6 +138,7 @@ body {
   transform: translateY(0);
   transition: transform 200ms;
   width: 76px;
+  margin-left: 80px;
 }
 
 .cut-short {
@@ -160,7 +159,8 @@ body {
   position: absolute;
   transform-origin: 0 50%;
   transition: transform 200ms, color 200ms;
-  top: 20px;
+  top: 23px;
+  margin-left: 82px;
 }
 
 .input:focus ~ .placeholder,
@@ -177,17 +177,19 @@ body {
 }
 
 .submit {
-  background-color: #08d;
-  border-radius: 12px;
+  background: #415c96;
   border: 0;
-  box-sizing: border-box;
-  color: #eee;
-  cursor: pointer;
-  font-size: 18px;
-  height: 50px;
-  margin-top: 38px;
-  text-align: center;
-  width: 100%;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 30%;
+  margin: 30px auto;
+  height: 40px;
 }
 
 .submit:active {
