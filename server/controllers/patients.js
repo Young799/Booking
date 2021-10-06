@@ -48,16 +48,6 @@ router.get('/api/patients', function(req,res,next){
             }); 
     });
 
-//Delete patients collection
-router.delete('/api/patients',async (req, res)=>{
-    try{
-        const patients=await Patient.remove();
-        res.status(200).json(patients);
-    }catch(err){
-        res.status(404).json({message:err});
-    }
-});
-
 //get individual patient
 router.get('/api/patients/:id',async (req, res)=>{
     try{
