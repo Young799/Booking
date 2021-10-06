@@ -38,7 +38,7 @@
       </div>
       <!--<div v-if="passwordError" class="error" {{ passwordError }}></div>-->
       <div class="input-container ic1">
-        <input id="confirm password" class="input" type="password" placeholder=" " required v-model="confirmpassword" />
+        <input id="confirmpassword" class="input" type="password" placeholder=" " required v-model="confirmpassword" />
         <div class="cut"></div>
         <label for="password" class="placeholder">confirm password</label>
       </div>
@@ -86,7 +86,7 @@ export default {
         .then(response => {
           alert('You are now registered')
           // if (result.status === 201) {
-          this.$router.push('/login')
+          this.$router.push('/patients/login')
           // }
         })
         .catch(error => {
@@ -243,5 +243,17 @@ body {
   width: 50%;
   margin: 30px auto;
   height: 40px;
+}
+#confirmpassword {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 90%;
 }
 </style>
