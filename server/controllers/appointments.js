@@ -8,9 +8,9 @@ var Doctor = require('../models/doctor');
 router.post('/api/patients/:patient_id/appointments', async function(req, res, next){
         const patient=await Patient.findById(req.params.patient_id);
         var  appointment= new Appointment({
-            appointment_date:req.body.appointmentDate, 
+            appointment_date:req.body.appointment_date, 
             time:req.body.time,
-            patient: patient,
+            patient: patient._id,
             is_confirmed:false
         });
         appointment.save(function(err, appointment){
@@ -34,7 +34,7 @@ router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, 
             if (doctor === null) return res.status(404).json({ message: 'Doctor not found' });
             
             appointment.is_confirmed = true;
-            appointment.doctor = doctor;
+            appointment.doctor = doctor._id;
 
             appointment.save();
             return res.status(200).json({ 'appointment': appointment});
@@ -80,6 +80,24 @@ router.delete('/api/patients/:patient_id/appointments/:appointment_id',  functio
     res.status(200).json({ 'appointment': appointment });
 });
 });
+
+router.delete('/api/appointments',async (req,res)=>{
+    try{
+        const appointments=await Appointment.remove();
+        res.status(200).json(appointments);
+    }catch(err){
+        res.status(404).json({message:err});
+    }
+});
+
+router.delete('/api/appointments/:id',async (req,res)=>{
+    try{
+        const removed_appointment= await Appointment.remove({_id:req.params.id});
+        res.status(200).json(removed_appointment);
+    }catch(err){
+        res.status(404).json({message:"ID invalid"});
+    }
+}); 
 
 // Getting all appointments 
 router.get('/api/appointments',async (req,res)=>{

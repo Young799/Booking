@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "localhost:3000/api/doctors",
+			"name": "Doctors",
 			"event": [
 				{
 					"listen": "test",
@@ -49,7 +49,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients",
+			"name": "Patients",
 			"event": [
 				{
 					"listen": "test",
@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"first_name\": \"Erik\",\r\n            \"last_name\": \"sand\",\r\n            \"personal_number\": 198603047892,\r\n            \"phone_number\": 788234345,\r\n            \"email_address\": \"erik@gmail.com\",\r\n            \"password\": \"1234\"\r\n}",
+					"raw": "{\r\n    \"first_name\": \"Erik\",\r\n            \"last_name\": \"sand\",\r\n            \"personal_number\": 198603047892,\r\n             \"password\": \"1234\",\r\n             \"confirmPassword\" :\"1234\",\r\n            \"email_address\": \"erik@gmail.com\"\r\n           \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -91,47 +91,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/login",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n     \"email_address\": \"erik@gmail.com\",\r\n            \"password\" : \"1234\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}/api/login",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:3000/api/appointments",
+			"name": "Appointments for single patient",
 			"event": [
 				{
 					"listen": "test",
@@ -175,7 +135,76 @@
 			"response": []
 		},
 		{
-			"name": "{{host}}/api/logindoctors",
+			"name": "Notifications for single patient",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id}}/notifications",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id}}",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctors login",
 			"event": [
 				{
 					"listen": "test",
@@ -215,7 +244,7 @@
 			"response": []
 		},
 		{
-			"name": "GET /api",
+			"name": "Appointments",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -250,7 +279,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/doctors",
+			"name": "Doctors",
 			"event": [
 				{
 					"listen": "test",
@@ -281,39 +310,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/doctors/6143b7258f8d2d7148e32d46",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/api/doctors/{{doctor_id}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"doctors",
-						"{{doctor_id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{host}}/api/patients?email_address=abc@gmail.com&password=123456",
+			"name": "Patients",
 			"event": [
 				{
 					"listen": "test",
@@ -356,7 +353,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients?filter=email_address&password",
+			"name": "Doctor",
 			"event": [
 				{
 					"listen": "test",
@@ -374,20 +371,21 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/api/patients",
+					"raw": "{{host}}/api/doctors/{{doctor_id}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"patients"
+						"doctors",
+						"{{doctor_id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients/6142fea95e438e75904efb4c",
+			"name": "Patient",
 			"event": [
 				{
 					"listen": "test",
@@ -419,7 +417,60 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients/6142feb95e438e75904efb4e/appointments/6143c2af8f8d2d7148e32d7c",
+			"name": "Single patients appointments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id}}/appointments",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id}}",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single patients notifications",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id}}/notifications",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id}}",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Single appointment for single patient",
 			"event": [
 				{
 					"listen": "test",
@@ -453,7 +504,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients?sortBy=firstName",
+			"name": "Patients sorted",
 			"event": [
 				{
 					"listen": "test",
@@ -467,30 +518,38 @@
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "{{host}}/api/patients?sortBy=firstName",
+					"raw": "{{host}}/api/patients/{{patient_id}}/appointments",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"patients"
-					],
-					"query": [
-						{
-							"key": "sortBy",
-							"value": "firstName"
-						}
+						"patients",
+						"{{patient_id}}",
+						"appointments"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/appointments/6143d2177da4c65e6c8202f2/doctors/6143d43e7da4c65e6c82031b",
+			"name": "Patch doctor to appointment",
 			"event": [
 				{
 					"listen": "test",
@@ -534,7 +593,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients/6142fe9e5e438e75904efb4a",
+			"name": "Patient",
 			"event": [
 				{
 					"listen": "test",
@@ -553,7 +612,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"firstName\": \"Lis\"\r\n}",
+					"raw": "{\"first_name\": \"Laaais\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -575,7 +634,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/doctors/6143b74c8f8d2d7148e32d49",
+			"name": "Doctor",
 			"event": [
 				{
 					"listen": "test",
@@ -616,7 +675,48 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/doctors/61448d66d5c99145b8dcdbd1",
+			"name": "Patient",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"lisa\",\r\n            \"last_name\": \"Oama\",\r\n            \"password\": \"1990321345\",\r\n            \"confirmPassword\": \"1990321345\",\r\n            \"email_address\": \"lua@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doctor",
 			"event": [
 				{
 					"listen": "test",
@@ -657,7 +757,7 @@
 			"response": []
 		},
 		{
-			"name": "{{host}}/api/patients/61431ba249e17a6a58e7e38d",
+			"name": "Doctors",
 			"event": [
 				{
 					"listen": "test",
@@ -672,33 +772,72 @@
 				}
 			],
 			"request": {
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"first_name\" :\"Elin\",\r\n    \"last_name\" :\"Mark\",\r\n    \"personal_number\":\"19960609\",\r\n    \"phone_number\":\"0708373717\",\r\n    \"email_address\":\"Elin@gmail.com\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id}}",
+					"raw": "{{host}}/api/doctors",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"patients",
-						"{{patient_id}}"
+						"doctors"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/patients/6142fe685e438e75904efb48/appointments/6143c29c8f8d2d7148e32d79",
+			"name": "Patients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/patients",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Appointments",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/appointments",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "single appointment for single patient",
 			"event": [
 				{
 					"listen": "test",
@@ -732,38 +871,7 @@
 			"response": []
 		},
 		{
-			"name": "{{host}}/api/doctors",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/api/doctors",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"doctors"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:3000/api/patients/6141105ab1eccf4ecca276dd",
+			"name": "Patient",
 			"event": [
 				{
 					"listen": "test",
@@ -795,7 +903,7 @@
 			"response": []
 		},
 		{
-			"name": "localhost:3000/api/doctors/6143b74c8f8d2d7148e32d49",
+			"name": "Doctor",
 			"event": [
 				{
 					"listen": "test",
@@ -821,37 +929,6 @@
 						"api",
 						"doctors",
 						"{{doctor_id}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "{{host}}/api/patients",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/api/patients",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients"
 					]
 				}
 			},

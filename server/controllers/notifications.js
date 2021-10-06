@@ -1,0 +1,30 @@
+var express = require('express');
+var router = express.Router();
+var Patient = require('../models/patient');
+var Notification = require('../models/notification');
+
+router.post('/api/patients/:patient_id/notifications', async function(req, res, next){
+    const patient=await Patient.findById(req.params.patient_id);
+    var  notification= new Notification({
+        text:'Your appointment has been approved', 
+        patient: patient._id
+    });
+    notification.save(function(err, notification){
+    
+    if (err) { return next(err); }
+    res.status(201).json(notification);
+  })
+}); 
+
+router.get('/api/patients/:patient_id/notifications', async function(req, res, next){
+    await Notification.find({ 'patient': req.params.patient_id }, function (err, notification) {
+    if (!notification) {
+        return res.status(404).json({
+            message: "There are no notifications"
+        });
+    }
+    res.status(200).json({ 'notification': notification });
+    });
+});
+
+module.exports=router;
