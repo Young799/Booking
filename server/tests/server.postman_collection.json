@@ -91,86 +91,13 @@
 			"response": []
 		},
 		{
-			"name": "Appointments for single patient",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(201);\r",
-							"});\r",
-							"var jsonData = pm.response.json();\r",
-							"    pm.environment.set(\"appointment_id\", jsonData._id);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"appointment_date\":\"2021-10-10\",\r\n\"time\":\"10.30\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id}}/appointments",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients",
-						"{{patient_id}}",
-						"appointments"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Notifications for single patient",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id}}/notifications",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"api",
-						"patients",
-						"{{patient_id}}",
-						"notifications"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Patient login",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});"
 						],
@@ -244,6 +171,92 @@
 			"response": []
 		},
 		{
+			"name": "Appointments for single patient",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"    pm.environment.set(\"appointment_id\", jsonData._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"appointment_date\":\"2021-10-10\",\r\n\"time\":\"10.30\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id}}/appointments",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id}}",
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notifications for single patient",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/patients/{{patient_id}}/notifications",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"patients",
+						"{{patient_id}}",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Appointments",
 			"event": [
 				{
@@ -251,6 +264,17 @@
 					"script": {
 						"exec": [
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -451,6 +475,19 @@
 		},
 		{
 			"name": "Single patients notifications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
