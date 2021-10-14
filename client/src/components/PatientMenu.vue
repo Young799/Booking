@@ -18,13 +18,7 @@
           <li class="nav-item active">
             <router-link class="nav-link" to="/">Home</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/patients">Patients</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/doctors">Doctors</router-link>
-          </li>
-          <li class="nav-item-log-out">
+          <li class="nav-item-log-out-doctor">
             <router-link class="nav-link" to="/logout">Log Out</router-link>
           </li>
         </ul>
@@ -33,12 +27,7 @@
 </template>
 
 <style>
-.nav-item-log-out {
-  margin-left: 750px;
+.nav-item-log-out-doctor {
+  margin-left: 900px;
 }
-
-.nav {
-  background-color: #172531;
-}
-
 </style>

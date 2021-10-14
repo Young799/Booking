@@ -1,16 +1,16 @@
 <template>
   <div>
       <Navbar />
-    <PatientLogin />
+    <RegisterDoctor />
   </div>
 </template>
 
 <script>
-import PatientLogin from '@/components/PatientLogin.vue'
+import RegisterDoctor from '@/components/RegisterDoctor.vue'
 import Navbar from '@/components/Navbar.vue'
 export default {
   components: {
-    PatientLogin,
+    RegisterDoctor,
     Navbar
   }
 }

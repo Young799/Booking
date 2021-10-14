@@ -8,6 +8,7 @@ const bodyParser=require('body-parser');
 const patientRoute=require('./controllers/patients')
 const doctorRoute=require('./controllers/doctors')
 const appointmentRoute=require('./controllers/appointments')
+const notificationRoute=require('./controllers/notifications')
 
 // Variables
 var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/animalDevelopmentDB';
@@ -36,13 +37,11 @@ app.use(morgan('dev'));
 app.options('*', cors());
 app.use(cors());
 
-
-
-
 // Import routes
 app.use(patientRoute);
 app.use(doctorRoute);
 app.use(appointmentRoute);
+app.use(notificationRoute);
     
 // Catch all non-error handler for api (i.e., 404 Not Found)
 app.use('/api/*', function (req, res) {

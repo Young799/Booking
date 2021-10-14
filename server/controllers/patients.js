@@ -34,6 +34,7 @@ router.post('/api/login', function (req, res) {
     });    
    });
 
+
 //retrieve patients collection and sorting when adding ?sortBy=lastName in postman
 router.get('/api/patients', function(req,res,next){
     let sort = req.query.sortBy;  
@@ -47,16 +48,6 @@ router.get('/api/patients', function(req,res,next){
             }); 
     });
 
-//Delete patients collection
-router.delete('/api/patients',async (req, res)=>{
-    try{
-        const patients=await Patient.remove();
-        res.status(200).json(patients);
-    }catch(err){
-        res.status(404).json({message:err});
-    }
-});
-
 //get individual patient
 router.get('/api/patients/:id',async (req, res)=>{
     try{
@@ -68,25 +59,12 @@ router.get('/api/patients/:id',async (req, res)=>{
 });
 
  //Update the individual patient with PUT 
-router.put('/api/patients/:id', async(req, res)=>{
-    try{
-        var patients = await Patient.find()
-        var id = req.params.id;
-        var updated_patient ={
-        _id:req.params.id,
-        "first_name":req.body.first_name,
-        "last_name" :req.body.last_name,
-        "personal_number":req.body.personal_number,
-        "phone_number":req.body.phone_number,
-        "email_address":req.body.email_address
-    }
-    patients[id] = updated_patient;
-    res.status(200).json(updated_patient);
-}catch(err){ 
-    res.status(404).json({message:"Id invalid"});
-}
+ router.put('/api/patients/:id', function (req, res, next) {
+    const patient = Patient.findById({ _id: req.params.id })
+    Patient.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }).then(function (patient) {
+        res.send(patient)
+    })
 });
-
 
 //update the individual patient with first  
 router.patch('/api/patients/:id', async(req, res)=>{

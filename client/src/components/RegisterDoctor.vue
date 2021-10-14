@@ -1,30 +1,71 @@
 <template>
-  <div class="RegisterDoctor">
-    <form class="formOne" @submit.prevent="handleSubmit">
-      <label>First name:</label>
-      <input type="firstname" required v-model="firstname" />
-      <label>Last name:</label>
-      <input type="lastname" required v-model="lastname" />
-      <label>Personal number:</label>
-      <input type="personalnumber" required v-model="personalnumber" />
-      <label>Specialist:</label>
-      <select type="specialist" v-model="specialist">
-        <option value="Pediatrician">Pediatrician</option>
+  <div>
+  <form class="formOne" @submit.prevent="handleSubmit">
+      <div class="title">Welcome</div>
+      <div class="subtitle">Let's create your account!</div>
+      <div class="row pt-2">
+        <div class="col-md">
+      <div class="input-container ic1">
+        <input id="firstname" class="input" type="text" placeholder=" " required v-model="firstname"/>
+        <label for="firstname" class="placeholder">First name</label>
+      </div>
+      </div>
+      <div class="col-md">
+      <div class="input-container ic2">
+        <input id="lastname" class="input" type="text" placeholder=" " required v-model="lastname" />
+        <label for="lastname" class="placeholder">Last name</label>
+      </div>
+      </div>
+      </div>
+       <div class="row pt-2">
+        <div class="col-md">
+      <div class="input-container ic1">
+        <input id="personalnumber" class="input" type="personalnumber" placeholder=" " required v-model="personalnumber" />
+        <label for="personalnumber" class="placeholder">Personal number</label>
+         </div>
+      </div>
+       <div class="col-md">
+      <div class="input-container ic1">
+        <select id="specialist" class="input" type="specialist" placeholder=" " required v-model="specialist">
+        <label for="specialist" class="placeholder">Specialist</label>
+         <option value="Pediatrician">Pediatrician</option>
         <option value="Dermatologist">Dermatologist</option>
         <option value="Psychiatrist">Psychiatrist</option>
         <option value="Orthopedist">Orthopedist</option>
         <option value="Gynecologist">Gynecologist</option>
         <option value="Surgeon">Surgeon</option>
-      </select>
-      <label>Email:</label>
-      <input type="emailaddress" required v-model="emailaddress" />
-      <label>Password:</label>
-      <input type="password" required v-model="password" />
-      <div class="submitOne">
-          <button id="submitButton" class="float-md-none">Add Doctor</button>
+        </select>
       </div>
-    </form>
-  </div>
+      </div>
+      </div>
+       <div class="row pt-2">
+              <div class="col-md">
+      <div class="input-container ic1">
+        <input id="emailaddress" class="input" type="emailaddress" placeholder=" " required v-model="emailaddress" />
+        <label for="emailaddress" class="placeholder">Email Address</label>
+      </div>
+         </div>
+              <div class="col-md">
+      <div class="input-container ic1">
+          <input id="password" class="input" type="password" placeholder=" " required v-model="password" />
+        <label for="password" class="placeholder">Password</label>
+         </div>
+         </div>
+             </div>
+       <div class="row pt-2">
+        <div class="col-md">
+     <div class="submitOne">
+            <button id="submitButton" class="float-md-none">Register</button>
+          </div>
+          </div>
+          <div class="col-md">
+          <button @click="doctorLogin" id="login" class="float-md-none">
+              Log In
+            </button>
+          </div>
+          </div>
+      </form>
+    </div>
 </template>
 
 <script>
@@ -56,20 +97,34 @@ export default {
         .catch((error) => {
           alert(error)
         })
+    },
+    doctorLogin() {
+      this.$router.push('/doctorslogin')
     }
   }
 }
 </script>
 
 <style>
-.formOne {
-  max-width: 420px;
-  background: #ffffff;
-  text-align: left;
-  padding: 40px;
-  border-radius: 10px;
-  margin: 30px auto;
+body {
+  align-items: center;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
 }
+
+.formOne {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 500px;
+  padding: 20px;
+  width: 900px;
+  margin: 30px auto;
+  margin-top: 20px;
+}
+
 label {
   color: #aaa;
   display: inline-block;
@@ -78,6 +133,22 @@ label {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
+}
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 5px;
 }
 input,
 select {
@@ -89,15 +160,9 @@ select {
   border-bottom: 1px solid #ddd;
   color: #555;
 }
-.title {
-  color: rgba(100, 93, 93, 0.096);
-  font-size: 0.6em;
-  text-transform: uppercase;
-  letter-spacing: 0px;
-  font-weight: bold;
-}
-button:hover{
-     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 #submitButton {
   background: #415c96;
@@ -110,9 +175,24 @@ button:hover{
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
-  width: 55%;
+  width: 50%;
+  margin: 30px auto;
 }
 .submitOne {
   text-align: center;
+}
+#login {
+  background: #415c96;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 50%;
+  margin: 30px auto;
 }
 </style>
