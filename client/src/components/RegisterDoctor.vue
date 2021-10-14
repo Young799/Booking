@@ -134,6 +134,22 @@ label {
   letter-spacing: 1px;
   font-weight: bold;
 }
+
+.title {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.subtitle {
+  color: #eee;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 5px;
+}
 input,
 select {
   display: block;
@@ -143,13 +159,6 @@ select {
   border: none;
   border-bottom: 1px solid #ddd;
   color: #555;
-}
-.title {
-  color: rgba(100, 93, 93, 0.096);
-  font-size: 0.6em;
-  text-transform: uppercase;
-  letter-spacing: 0px;
-  font-weight: bold;
 }
 button:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),

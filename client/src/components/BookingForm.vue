@@ -1,44 +1,40 @@
 <template>
   <div class="booking">
     <b-container fluid>
-          <div class="row pt-2">
-            <div class="col-12">
-              <h2 class="menu_1">Request Appointment</h2>
-            </div>
-          </div>
-          <div class="row pt-2">
-            <div class="col-12">
-              <label for="bookinginfo1">Enter your wished booking date:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="bookinginfo1"
-                v-model="booking.date"
-                placeholder="yyyy-mm-dd"
-              />
-            </div>
-            <div class="col-12">
-              <label for="bookinginfo2">Enter your wished booking time:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="bookinginfo2"
-                v-model="booking.time"
-                placeholder="hh-mm"
-              />
-            </div>
-          </div>
-          <div class="row pt-2">
-            <div class="col-12">
-              <button
-                type="button"
-                class="send"
-                v-on:click="sendRequest"
-              >
-                Send request
-              </button>
-            </div>
-          </div>
+      <div class="row pt-2">
+        <div class="col-12">
+          <h2 class="menu_1">Request Appointment</h2>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-12">
+          <label for="bookinginfo1">Enter your wished booking date:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookinginfo1"
+            v-model="booking.date"
+            placeholder="yyyy-mm-dd"
+          />
+        </div>
+        <div class="col-12">
+          <label for="bookinginfo2">Enter your wished booking time:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="bookinginfo2"
+            v-model="booking.time"
+            placeholder="hh-mm"
+          />
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-12">
+          <button type="button" class="send" v-on:click="sendRequest">
+            Send request
+          </button>
+        </div>
+      </div>
     </b-container>
   </div>
 </template>
@@ -55,19 +51,21 @@ export default {
       }
     }
   },
-  sendRequest() {
-    Api.post(`/patients/${this.$route.params.id}/appointments`, {
-      appointment_date: this.booking.date,
-      time: this.booking.time
-    })
-      .then((response) => {
-        alert('Do you want to send a booking request')
-        console.log(response)
+  methods: {
+    sendRequest() {
+      Api.post(`/patients/${this.$route.params.id}/appointments`, {
+        appointment_date: this.booking.date,
+        time: this.booking.time
       })
+        .then((response) => {
+          alert('Do you want to send a booking request')
+          console.log(response)
+        })
 
-      .catch((error) => {
-        alert(error)
-      })
+        .catch((error) => {
+          alert(error)
+        })
+    }
   }
 }
 </script>
@@ -79,8 +77,8 @@ export default {
 .form-control {
   width: 100px;
 }
-.menu_1{
-     font-family: Impact, Charcoal, sans-serif;
+.menu_1 {
+  font-family: Impact, Charcoal, sans-serif;
   font-size: 25px;
   letter-spacing: 4px;
   word-spacing: 2px;
@@ -94,7 +92,7 @@ export default {
   margin-bottom: 20px;
 }
 .send {
-     background: #415c96;
+  background: #415c96;
   border: 0;
   padding: 10px 20px;
   color: white;

@@ -12,7 +12,7 @@
                 <input
                   type="text"
                   name="firstname"
-                  v-model="patient.firstname"
+                  required v-model="patient.firstname"
                   class="form-control"
                 />
               </div>
@@ -21,7 +21,7 @@
                 <input
                   type="text"
                   name="lastname"
-                  v-model="patient.lastname"
+                  required v-model="patient.lastname"
                   class="form-control"
                 />
               </div>
@@ -32,7 +32,7 @@
                 <input
                   type="text"
                   name="email"
-                  v-model="patient.email"
+                  required v-model="patient.email"
                   class="form-control"
                 />
               </div>
@@ -43,7 +43,7 @@
                 <input
                   type="text"
                   name="password"
-                  v-model="patient.password"
+                  required v-model="patient.password"
                   placeholder="Enter new password here"
                   class="form-control"
                 />
@@ -55,19 +55,35 @@
                 <input
                   type="text"
                   name="confirmpassword"
-                  v-model="patient.confirmpassword"
+                  required v-model="patient.confirmpassword"
                   class="form-control"
                   placeholder="Enter new password again"
                 />
               </div>
             </div>
 
-            <div class="row pt-4 float-right">
-              <button class="save" type="submit" v-on:click="updateInfo">
-                Save your change
+            <div class="row pt-2">
+                <div class="col-12">
+              <button
+                class="save"
+                type="submit"
+                v-on:click="updateInfo"
+              >
+                Save
               </button>
+                </div>
+               <div class="col-12">
+              <button
+                class="cancel"
+                type="submit"
+                v-on:click="getUserProfile"
+              >
+                Cancel
+              </button>
+              </div>
+              </div>
+              <div class="col-12"></div>
             </div>
-          </div>
         </body>
       </span>
     </b-container>
@@ -81,8 +97,8 @@ export default {
   data() {
     return {
       patient: {
-        // firstname: '',
-        // lastname: '',
+        firstname: '',
+        lastname: '',
         email: '',
         password: '',
         confirmpassword: ''
@@ -96,9 +112,9 @@ export default {
         alert('Will you save your new information?')
 
         Api.put('/patients/' + this.$route.params.id, {
-          //    first_name: this.patient.firstname,
-          //   last_name: this.patient.lastname,
-          email_address: this.patient.email_address,
+          first_name: this.patient.firstname,
+          last_name: this.patient.lastname,
+          email_address: this.patient.email,
           password: this.patient.password,
           confirmPassword: this.patient.confirmpassword
         })
@@ -117,6 +133,11 @@ export default {
       } else {
         alert('Your confirmed password is not match with your password')
       }
+    },
+
+    getUserProfile() {
+      const userId = this.$route.params.id
+      this.$router.push(`/booking/${userId}`)
     }
   }
 }
@@ -133,8 +154,20 @@ export default {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: bold;
-  width: 100%;
+  width: 20%;
   margin: 30px auto;
+}
+.cancel {
+  background: #415c96;
+  border: 0;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 20%;
 }
 
 .updateProfile {

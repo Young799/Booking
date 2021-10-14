@@ -21,7 +21,10 @@
         <td>{{ appointment.doctor }}</td>
         <td>{{ appointment.is_confirmed }}</td>
         <td>
-          <button id="cancleButton" v-on:click="cancleAppointment(appointment._id)">
+          <button
+            id="cancleButton"
+            v-on:click="cancleAppointment(appointment._id)"
+          >
             Cancle
           </button>
         </td>
@@ -40,39 +43,43 @@ export default {
     }
   },
   mounted() {
-    Api.get(`/patients/${this.$route.params.id}/appointments`).then(
-      response => {
-        console.log(response)
-        this.list = response.data.appointment
-      }
-    )
+    this.getAppointments()
   },
-
-  cancleAppointment(id) {
-    Api.delete(
-      '/patients/' + this.$route.params.id + '/appointments/' + id,
-      {}
-    )
-      .then(response => {
-        alert('Are you sure to cancle this booking?')
-        console.log(response)
-        this.list = response.data.appointment
-      })
-      .catch(error => {
-        alert(error)
-      })
+  methods: {
+    getAppointments() {
+      Api.get(`/patients/${this.$route.params.id}/appointments`).then(
+        (response) => {
+          console.log(response)
+          this.list = response.data.appointment
+        }
+      )
+    },
+    cancleAppointment(id) {
+      Api.delete(
+        '/patients/' + this.$route.params.id + '/appointments/' + id,
+        {}
+      )
+        .then((response) => {
+          alert('Are you sure to cancle this booking?')
+          console.log(response)
+          this.list = response.data.appointment
+          this.getAppointments()
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    }
   }
 }
 </script>
 <style>
-
 .table col-10 {
   width: 80%;
   border-collapse: collapse;
   margin: 30px auto;
 }
-#cancleButton{
-      background: #2e4a62;
+#cancleButton {
+  background: #2e4a62;
   border: 0;
   padding: 10px 20px;
   color: white;
