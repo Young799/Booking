@@ -20,13 +20,20 @@
       <tr v-for="appointment in list" v-bind:key="appointment._id">
         <td>{{ appointment.appointment_date }}</td>
         <td>{{ appointment.time }}</td>
-        <td>{{ appointment.patient }}</td>
+        <td>{{ appointment.patient}}</td>
         <td>{{ appointment.doctor }}</td>
         <td>{{ appointment.is_confirmed }}</td>
         <td>
           <button
             id="editButton"
-            v-on:click="editAppointment(appointment._id, appointment.patient)"
+            v-on:click="
+              editAppointment(
+                appointment._id,
+                appointment.patient,
+                appointment.appointment_date,
+                appointment.time
+              )
+            "
           >
             Confirm
           </button>
@@ -49,7 +56,9 @@ import { Api } from '@/Api'
 export default {
   name: 'AppointmentTable',
   data() {
-    return { list: undefined }
+    return {
+      list: undefined
+    }
   },
   mounted() {
     this.getData()
@@ -66,12 +75,15 @@ export default {
         this.getData()
       })
     },
-    editAppointment(id, patient) {
+    editAppointment(id, patient, date, time) {
       Api.patch(
         '/appointments/' + id + '/doctors/' + this.$route.params.id
       ).then(() => {
         this.getData()
-        Api.post('patients/' + patient + '/notifications/').then(() => {})
+        Api.post('patients/' + patient + '/notifications/', {
+          appointment_date: date,
+          appointment_time: time
+        }).then(() => {})
       })
     }
   }

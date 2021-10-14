@@ -7,12 +7,14 @@
     <h2 class="appointmentTitle">Notifications</h2>
     <table class="appointmentTable">
       <tr>
-        <th>Id</th>
         <th>Message</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
       </tr>
       <tr v-for="notification in list" v-bind:key="notification._id">
-        <td>{{ notification._id }}</td>
         <td>{{ notification.text }}</td>
+        <td>{{ notification.appointment_date }}</td>
+        <td>{{ notification.appointment_time }}</td>
       </tr>
     </table>
   </div>
