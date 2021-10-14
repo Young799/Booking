@@ -7,6 +7,8 @@ router.post('/api/patients/:patient_id/notifications', async function(req, res, 
     const patient=await Patient.findById(req.params.patient_id);
     var  notification= new Notification({
         text:'Your appointment has been approved', 
+        appointment_date:req.body.appointment_date,
+        appointment_time:req.body.appointment_time,
         patient: patient._id
     });
     notification.save(function(err, notification){

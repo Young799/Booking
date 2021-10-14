@@ -10,7 +10,7 @@ router.post('/api/patients/:patient_id/appointments', async function(req, res, n
         var  appointment= new Appointment({
             appointment_date:req.body.appointment_date, 
             time:req.body.time,
-            patient: patient._id,
+            patient: patient,
             is_confirmed:false
         });
         appointment.save(function(err, appointment){
@@ -34,7 +34,7 @@ router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, 
             if (doctor === null) return res.status(404).json({ message: 'Doctor not found' });
             
             appointment.is_confirmed = true;
-            appointment.doctor = doctor._id;
+            appointment.doctor = doctor;
 
             appointment.save();
             return res.status(200).json({ 'appointment': appointment});
