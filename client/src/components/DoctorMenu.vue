@@ -30,9 +30,4 @@
 .nav-item-log-out-doctor {
   margin-left: 900px;
 }
-
-.nav {
-  background-color: #172531;
-}
-
 </style>

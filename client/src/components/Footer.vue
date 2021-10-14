@@ -23,21 +23,20 @@
 
 <style>
 footer {
-  margin-top: 250px;
+  margin-top: 200px;
   border: white;
   background: #172531;
   color: aliceblue;
-  height: 40%;
-font-family: "Trebuchet MS", Helvetica, sans-serif;
-font-size: 18px;
-letter-spacing: -1px;
-word-spacing: -0.6px;
-font-weight: 400;
-text-decoration: none;
-font-style: normal;
-font-variant: small-caps;
-text-transform: uppercase;
-text-align: center;
+  height: 25%;
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  font-size: 14px;
+  letter-spacing: -1px;
+  word-spacing: -0.6px;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: uppercase;
+  text-align: center;
 }
-
 </style>

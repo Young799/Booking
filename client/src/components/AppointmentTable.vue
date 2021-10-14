@@ -4,18 +4,18 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Trirong"
     />
-    <h2 id="appointmentTitle">Appointments</h2>
+    <h2 class="appointmentTitle">Appointments</h2>
     <table class="appointmentTable">
       <thead>
-      <tr>
-        <th>Appointment Date</th>
-        <th>Time</th>
-        <th>Patient</th>
-        <th>Doctor</th>
-        <th>Confirmed</th>
-        <th></th>
-        <th></th>
-      </tr>
+        <tr>
+          <th>Appointment Date</th>
+          <th>Time</th>
+          <th>Patient</th>
+          <th>Doctor</th>
+          <th>Confirmed</th>
+          <th></th>
+          <th></th>
+        </tr>
       </thead>
       <tr v-for="appointment in list" v-bind:key="appointment._id">
         <td>{{ appointment.appointment_date }}</td>
@@ -79,13 +79,13 @@ export default {
 </script>
 
  <style>
- body{
-   height: 100vh;
-   display: grid;
-   justify-content: center;
-   align-items: center;
- }
-#appointmentTitle {
+body {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.appointmentTitle {
   font-family: Impact, Charcoal, sans-serif;
   font-size: 25px;
   letter-spacing: 4px;
@@ -102,15 +102,15 @@ export default {
 
 .appointmentTable {
   width: 95%;
-  border-collapse:collapse;
+  border-collapse: collapse;
   margin: 30px auto;
-   border: black;
-   box-shadow: 0 5px 10px rgb(189, 188, 188);
-   background-color: white;
+  border: black;
+  box-shadow: 0 5px 10px rgb(189, 188, 188);
+  background-color: white;
 }
 
 thead {
-box-shadow: 0 2px 5px rgb(168, 168, 168);
+  box-shadow: 0 2px 5px rgb(168, 168, 168);
 }
 
 td {
@@ -144,8 +144,8 @@ th {
   text-align: center;
 }
 
-tr:nth-child(even){
-background-color:rgb(232, 235, 236);
+tr:nth-child(even) {
+  background-color: rgb(232, 235, 236);
 }
 
 #delButton {
@@ -174,5 +174,4 @@ background-color:rgb(232, 235, 236);
   width: 80%;
   margin: 10px auto;
 }
-
 </style>

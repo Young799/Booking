@@ -40,7 +40,8 @@ import { Api } from '@/Api'
 export default {
   name: 'DoctorTable',
   data() {
-    return { list: undefined }
+    return {
+       list: undefined }
   },
   mounted() {
     this.getData()

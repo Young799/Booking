@@ -3,11 +3,12 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import RegisterPatient from './views/RegisterPatient.vue'
 import PatientLogin from './views/PatientLogin.vue'
-import Booking from './views/Booking.vue'
+import Booking from './views/Patients.vue'
 import Logout from './views/Logout.vue'
 import Doctors from './views/Doctors.vue'
 import DoctorLogin from './views/DoctorLogin.vue'
 import RegisterDoctor from './views/RegisterDoctor.vue'
+import UpdateUserInfo from './views/UpdateUserInfo.vue'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       name: 'booking',
       component: Booking
 
+    },
+    {
+      path: '/booking/:id/update',
+      name: 'UpdateUserInfo',
+      component: UpdateUserInfo
     },
     {
       path: '/logout',
