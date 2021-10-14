@@ -9,6 +9,7 @@ import Doctors from './views/Doctors.vue'
 import DoctorLogin from './views/DoctorLogin.vue'
 import RegisterDoctor from './views/RegisterDoctor.vue'
 import UpdateUserInfo from './views/UpdateUserInfo.vue'
+import patientNotification from './views/Notification.vue'
 
 Vue.use(Router)
 
@@ -41,6 +42,12 @@ export default new Router({
       path: '/booking/:id/update',
       name: 'UpdateUserInfo',
       component: UpdateUserInfo
+    },
+    {
+      path: '/booking/:id/notifications',
+      name: 'notification',
+      component: patientNotification
+
     },
     {
       path: '/logout',

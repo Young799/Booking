@@ -2,7 +2,6 @@
   <footer class="footer-distributed">
     <div class="footer-left">
       <p class="footer-links"></p>
-
       <p class="footer-company-name">WECARE4YOU &copy; 2021</p>
     </div>
 
