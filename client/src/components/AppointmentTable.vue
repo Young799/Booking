@@ -6,6 +6,7 @@
     />
     <h2 id="appointmentTitle">Appointments</h2>
     <table class="appointmentTable">
+      <thead>
       <tr>
         <th>Appointment Date</th>
         <th>Time</th>
@@ -13,9 +14,9 @@
         <th>Doctor</th>
         <th>Confirmed</th>
         <th></th>
-        <th>Actions</th>
         <th></th>
       </tr>
+      </thead>
       <tr v-for="appointment in list" v-bind:key="appointment._id">
         <td>{{ appointment.appointment_date }}</td>
         <td>{{ appointment.time }}</td>
@@ -78,25 +79,38 @@ export default {
 </script>
 
  <style>
+ body{
+   height: 100vh;
+   display: grid;
+   justify-content: center;
+   align-items: center;
+ }
 #appointmentTitle {
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-  font-size: 32px;
-  letter-spacing: 0.8px;
-  word-spacing: -1px;
-  color: #000000;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 25px;
+  letter-spacing: 4px;
+  word-spacing: 2px;
+  color: #3d3d3d;
   font-weight: 700;
   text-decoration: none;
   font-style: normal;
-  font-variant: normal;
-  text-transform: none;
+  font-variant: small-caps;
+  text-transform: uppercase;
   margin-top: 30px;
   margin-bottom: 50px;
 }
 
 .appointmentTable {
-  width: 100%;
-  border-collapse: collapse;
+  width: 95%;
+  border-collapse:collapse;
   margin: 30px auto;
+   border: black;
+   box-shadow: 0 5px 10px rgb(189, 188, 188);
+   background-color: white;
+}
+
+thead {
+box-shadow: 0 2px 5px rgb(168, 168, 168);
 }
 
 td {
@@ -114,23 +128,28 @@ td {
 }
 
 th {
-  background-color: rgb(93, 98, 126);
-  color: white;
+  padding: 1rem 2rem;
+  background-color: white;
+  color: rgb(8, 8, 8);
   font-family: 'Trebuchet MS', Helvetica, sans-serif;
   height: 40px;
-  font-size: 16px;
-  letter-spacing: -0.8px;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
   word-spacing: -1px;
-  font-weight: 400;
+  font-weight: 900;
   text-decoration: none;
   font-style: normal;
   font-variant: normal;
-  text-transform: none;
+  text-transform: uppercase;
   text-align: center;
 }
 
+tr:nth-child(even){
+background-color:rgb(232, 235, 236);
+}
+
 #delButton {
-  background: rgb(93, 98, 126);
+  background: #2e4a62;
   border: 0;
   padding: 10px 20px;
   color: white;
@@ -143,7 +162,7 @@ th {
   margin: 5px auto;
 }
 #editButton {
-  background: rgb(93, 98, 126);
+  background: #203344;
   border: 0;
   padding: 10px 20px;
   color: white;
@@ -155,17 +174,5 @@ th {
   width: 80%;
   margin: 10px auto;
 }
-#showButton {
-  background: rgb(93, 98, 126);
-  border: 0;
-  padding: 10px 20px;
-  color: white;
-  border-radius: 15px;
-  font-size: 0.6em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  width: 80%;
-  margin: 10px auto;
-}
+
 </style>

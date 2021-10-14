@@ -224,6 +224,7 @@ export default {
 <style>
 .container {
   max-width: 500px;
+  margin-top: 450px;
 }
 .spacer {
   height: 100px;

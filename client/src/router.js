@@ -7,7 +7,6 @@ import Booking from './views/Booking.vue'
 import Logout from './views/Logout.vue'
 import Doctors from './views/Doctors.vue'
 import DoctorLogin from './views/DoctorLogin.vue'
-import Appointment from './views/Appointment.vue'
 import RegisterDoctor from './views/RegisterDoctor.vue'
 
 Vue.use(Router)
@@ -52,11 +51,6 @@ export default new Router({
       path: '/doctorslogin',
       name: 'doctorlogin',
       component: DoctorLogin
-    },
-    {
-      path: 'appointments',
-      name: 'appointments',
-      component: Appointment
     },
     {
       path: '/doctors',

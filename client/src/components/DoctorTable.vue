@@ -1,60 +1,129 @@
 <template>
-  <div>
-    <div class="DoctorTable">
-      <table class="doctorTable">
-        <thead>
-          <tr>
-            <th class="doctorTh" v-for="(obj, ind) in config" :key="ind">{{ obj.title }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="doctorTr" v-for="(row, index) in theData" :key="index">
-            <td v-for="(obj, ind) in config" :key="ind">
-              {{ row[obj.key] }}
-              <span v-if="obj.typ === 'text'">{{ row[obj.key] }}</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div style="overflow-x: auto">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Trirong"
+    />
+    <h2 id="doctorTitle">Doctors</h2>
+    <table class="doctorTable">
+      <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Personal Number</th>
+        <th>Speciality</th>
+        <th>Email Address</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tr v-for="doctor in list" v-bind:key="doctor._id">
+        <td>{{ doctor.first_name }}</td>
+        <td>{{ doctor.last_name }}</td>
+        <td>{{ doctor.personal_number }}</td>
+        <td>{{ doctor.specialist }}</td>
+        <td>{{ doctor.email_address }}</td>
+        <td>
+          <button id="delButton" v-on:click="deleteDoctor(doctor._id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </table>
+    <button id="deleteButton" v-on:click="deleteDoctors()">
+          Delete All
+        </button>
   </div>
 </template>
 
 <script>
+import { Api } from '@/Api'
 export default {
-  props: ['theData', 'config']
+  name: 'DoctorTable',
+  data() {
+    return { list: undefined }
+  },
+  mounted() {
+    this.getData()
+  },
+  methods: {
+    getData() {
+      Api.get('/doctors').then((response) => {
+        this.list = response.data
+        console.warn(response.data)
+      })
+    },
+    deleteDoctors() {
+      Api.delete('/doctors').then(({ data }) => {
+        this.list = data
+      })
+    },
+    deleteDoctor(id) {
+      Api.delete('/doctors/' + id).then((response) => {
+        this.getData()
+      })
+    }
+  }
 }
 </script>
 
-<style>
-.DoctorTable {
-  border-radius: 4px;
-  overflow: auto;
-  width: 1100px;
-  margin: 30px auto;
-  max-height: 686px;
+ <style>
+  body{
+   height: 100vh;
+   display: grid;
+   justify-content: center;
+   align-items: center;
+ }
+#doctorTitle {
+font-family: Impact, Charcoal, sans-serif;
+  font-size: 25px;
+  letter-spacing: 4px;
+word-spacing: 2px;
+color: #3d3d3d;
+font-weight: 700;
+text-decoration: none;
+font-style: normal;
+font-variant: small-caps;
+text-transform: uppercase;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
+
 .doctorTable {
+  width: 95%;
   border-collapse: collapse;
-  color: #333;
-  width: 100%;
+  margin: 30px auto;
+   border: black;
+   box-shadow: 0 5px 10px rgb(189, 188, 188);
+   background-color: white;
+   overflow: hidden;
 }
-.doctorTh {
-  background: rgba(86, 121, 100, 0.445);
-  position: sticky;
-  top: 0;
-  padding: 10px 5px;
-  text-align: center;
-  border-bottom: 1px solid #999;
-  font-size: 0.7em;
+
+#delButton {
+  background: #2e4a62;
+  border: 0;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
   text-transform: uppercase;
+  letter-spacing: 1px;
   font-weight: bold;
+  width: 80%;
+  margin: 5px auto;
 }
-.doctorTr {
-    background: white;
-  padding: 5px 5px;
-  text-align: center;
-  font-size: 0.7em;
+
+#deleteButton {
+  margin: 30px auto;
+  background: #ca0e0e;
+  border: 0;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 14%;
+  margin: 30px auto;
 }
 </style>
