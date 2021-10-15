@@ -10,11 +10,20 @@
         <th>Message</th>
         <th>Appointment Date</th>
         <th>Appointment Time</th>
+        <th></th>
       </tr>
       <tr v-for="notification in list" v-bind:key="notification._id">
         <td>{{ notification.text }}</td>
         <td>{{ notification.appointment_date }}</td>
         <td>{{ notification.appointment_time }}</td>
+        <td>
+          <button
+            id="cancleButton"
+            v-on:click="deleteNotification(notification._id)"
+          >
+            Delete
+          </button>
+        </td>
       </tr>
     </table>
   </div>
@@ -30,12 +39,32 @@ export default {
     }
   },
   mounted() {
-    Api.get(`/patients/${this.$route.params.id}/notifications`).then(
-      (response) => {
-        console.log(response)
-        this.list = response.data.notification
-      }
-    )
+    this.getNofications()
+  },
+  methods: {
+    getNofications() {
+      Api.get(`/patients/${this.$route.params.id}/notifications`).then(
+        (response) => {
+          console.log(response)
+          this.list = response.data.notification
+        }
+      )
+    },
+    deleteNotification(id) {
+      Api.delete(
+        '/patients/' + this.$route.params.id + '/notifications/' + id,
+        {}
+      )
+        .then((response) => {
+          alert('Notification deleted')
+          console.log(response)
+          this.list = response.data.notification
+          this.getNofications()
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    }
   }
 }
 // }

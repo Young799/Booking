@@ -7,14 +7,14 @@
     <h2 id="doctorTitle">Doctors</h2>
     <table class="doctorTable">
       <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Personal Number</th>
-        <th>Speciality</th>
-        <th>Email Address</th>
-        <th>Action</th>
-      </tr>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Personal Number</th>
+          <th>Speciality</th>
+          <th>Email Address</th>
+          <th>Action</th>
+        </tr>
       </thead>
       <tr v-for="doctor in list" v-bind:key="doctor._id">
         <td>{{ doctor.first_name }}</td>
@@ -29,9 +29,7 @@
         </td>
       </tr>
     </table>
-    <button id="deleteButton" v-on:click="deleteDoctors()">
-          Delete All
-        </button>
+    <button id="deleteButton" v-on:click="deleteDoctors()">Delete All</button>
   </div>
 </template>
 
@@ -41,7 +39,8 @@ export default {
   name: 'DoctorTable',
   data() {
     return {
-       list: undefined }
+      list: undefined
+    }
   },
   mounted() {
     this.getData()
@@ -68,23 +67,23 @@ export default {
 </script>
 
  <style>
-  body{
-   height: 100vh;
-   display: grid;
-   justify-content: center;
-   align-items: center;
- }
+body {
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
 #doctorTitle {
-font-family: Impact, Charcoal, sans-serif;
+  font-family: Impact, Charcoal, sans-serif;
   font-size: 25px;
   letter-spacing: 4px;
-word-spacing: 2px;
-color: #3d3d3d;
-font-weight: 700;
-text-decoration: none;
-font-style: normal;
-font-variant: small-caps;
-text-transform: uppercase;
+  word-spacing: 2px;
+  color: #3d3d3d;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: uppercase;
   margin-top: 30px;
   margin-bottom: 50px;
 }
@@ -93,10 +92,10 @@ text-transform: uppercase;
   width: 95%;
   border-collapse: collapse;
   margin: 30px auto;
-   border: black;
-   box-shadow: 0 5px 10px rgb(189, 188, 188);
-   background-color: white;
-   overflow: hidden;
+  border: black;
+  box-shadow: 0 5px 10px rgb(189, 188, 188);
+  background-color: white;
+  overflow: hidden;
 }
 
 #delButton {

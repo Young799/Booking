@@ -1,17 +1,17 @@
 <template>
   <div>
-      <patient-menu/>
+    <user-menu />
     <profile-update-form />
   </div>
 </template>
 
 <script>
-import PatientMenu from '../components/PatientMenu.vue'
+import UserMenu from '../components/UserMenu.vue'
 import ProfileUpdateForm from '../components/ProfileUpdateForm.vue'
 export default {
   components: {
     ProfileUpdateForm,
-    PatientMenu
+    UserMenu
   }
 }
 </script>

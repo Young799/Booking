@@ -25,7 +25,7 @@
             id="cancleButton"
             v-on:click="cancleAppointment(appointment._id)"
           >
-            Cancle
+            Cancel
           </button>
         </td>
       </tr>

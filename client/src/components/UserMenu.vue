@@ -14,16 +14,11 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item href="/">Home</b-nav-item>
-          <b-nav-item href="/patients">Patients</b-nav-item>
-          <b-nav-item href="/doctors">Doctors</b-nav-item>
+        </b-navbar-nav>
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item href="/logout">Log Out</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
-
-<style>
-.nav-item-log-out {
-  margin-left: 750px;
-}
-</style>

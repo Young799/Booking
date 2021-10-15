@@ -29,4 +29,16 @@ router.get('/api/patients/:patient_id/notifications', async function(req, res, n
     });
 });
 
+router.delete('/api/patients/:patient_id/notifications/:notification_id',  function(req, res, next){
+    var notification= Notification.findById(req.params.notification_id);
+    notification.remove({ 'patient': req.params.patient_id }, function (err, notification) {
+    if (!notification) {
+        return res.status(404).json({
+            message: "There is no booking to delete"
+        });
+    }
+    res.status(200).json({ 'appointment': notification});
+});
+});
+
 module.exports=router;
