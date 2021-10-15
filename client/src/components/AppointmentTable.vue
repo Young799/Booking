@@ -1,4 +1,4 @@
- <template>
+<template>
   <div style="overflow-x: auto">
     <link
       rel="stylesheet"
@@ -65,13 +65,14 @@ export default {
   },
   methods: {
     getData() {
-      Api.get('/appointments').then((resp) => {
+      Api.get('/appointments').then(resp => {
         this.list = resp.data
         console.warn(resp.data)
       })
     },
+
     deleteAppointment(id) {
-      Api.delete('/appointments/' + id).then((resp) => {
+      Api.delete('/appointments/' + id).then(resp => {
         this.getData()
       })
     },
@@ -90,7 +91,7 @@ export default {
 }
 </script>
 
- <style>
+<style>
 body {
   height: 100vh;
   display: grid;

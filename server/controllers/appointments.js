@@ -52,7 +52,7 @@ router.get('/api/patients/:patient_id/appointments', async function(req, res, ne
         });
     }
     res.status(200).json({ 'appointment': appointment });
-    });
+    }).populate('doctor');
 });
 
 // Getting a specific appointment for one patient 
@@ -101,12 +101,16 @@ router.delete('/api/appointments/:id',async (req,res)=>{
 
 // Getting all appointments 
 router.get('/api/appointments',async (req,res)=>{
-        try{
-            const appointment=await Appointment.find();
-            res.status(200).json(appointment);
-        }catch(err){
-            res.json({message:err});
-        }
-    });
+    try{
+      //  const appointment=await Appointment.find().populate ({path:'patient' , populate :{path :'doctor'}}).exec();
+      const appointment=await Appointment.find().populate ('patient').populate('doctor').exec();
+        res.status(200).json(appointment)
+        console.log(appointment) 
+
+    }catch(err){
+        res.json({message:err});
+    }
+});
+
      
 module.exports=router;
