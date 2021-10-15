@@ -89,15 +89,4 @@ router.delete('/api/patients/:id', async (req, res)=>{
     }
 }); 
 
-
-//delete doctor collection
-router.delete('/api/patients',async (req,res)=>{
-    try{
-        const patients=await Patient.remove();
-        res.status(200).json(patients);
-    }catch(err){
-        res.status(404).json({message:err});
-    }
-});
-
 module.exports = router;

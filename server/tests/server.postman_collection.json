@@ -55,7 +55,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"var jsonData = pm.response.json();\r",
@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"first_name\": \"Erik\",\r\n            \"last_name\": \"sand\",\r\n            \"personal_number\": 198603047892,\r\n             \"password\": \"1234\",\r\n             \"confirmPassword\" :\"1234\",\r\n            \"email_address\": \"erik@gmail.com\"\r\n           \r\n}",
+					"raw": "{\r\n    \"first_name\": \"Erik\",\r\n            \"last_name\": \"sand\",\r\n            \"personal_number\": 198603047892,\r\n             \"password\": \"12345\",\r\n             \"confirmPassword\" :\"12345\",\r\n            \"email_address\": \"erik@gmail.com\"\r\n           \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -97,7 +97,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});"
 						],
@@ -131,13 +131,53 @@
 			"response": []
 		},
 		{
+			"name": "Patients login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email_address\": \"erik@gmail.com\",\r\n       \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/login",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Appointments for single patient",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
+							"pm.test(\"Status code is 201\", function () {\r",
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"var jsonData = pm.response.json();\r",
@@ -152,7 +192,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"appointment_date\":\"2021-10-10\",\r\n\"time\":\"10.30\"\r\n\r\n}",
+					"raw": "{\r\n\"appointment_date\":\"2022-09-09\",\r\n\"time\":\"10.13\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -517,31 +557,23 @@
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "{{host}}/api/patients/{{patient_id}}/appointments",
+					"raw": "{{host}}/api/patients?sortBy=lastName",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"api",
-						"patients",
-						"{{patient_id}}",
-						"appointments"
+						"patients"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "lastName"
+						}
 					]
 				}
 			},
@@ -811,7 +843,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 201\", function () {\r",
+							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
