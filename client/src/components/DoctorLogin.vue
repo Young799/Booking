@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="formFour">
+    <div class="form">
       <div class="Welcometitle">Welcome</div>
       <div class="subtitle">Log in to your account!</div>
       <div class="input-container ic2">
@@ -74,17 +74,18 @@ body {
   justify-content: center;
   height: 100vh;
 }
-.formFour {
+.form {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 450px;
+  height: 500px;
   padding: 20px;
-  width: 700px;
+  width: 900px;
   margin: 30px auto;
+  margin-top: 20px;
 }
 
-.Welcometitle {
+.title {
   color: #eee;
   font-family: sans-serif;
   font-size: 36px;

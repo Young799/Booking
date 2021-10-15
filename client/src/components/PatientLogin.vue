@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="formThree">
+    <div class="form">
       <div class="Welcometitle">Welcome</div>
       <div class="subtitle">Log in to your account!</div>
       <div class="input-container ic2">
@@ -76,14 +76,15 @@ body {
   height: 100vh;
 }
 
-.formThree {
+.form {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 450px;
+  height: 500px;
   padding: 20px;
-  width: 700px;
+  width: 900px;
   margin: 30px auto;
+  margin-top: 20px;
 }
 
 body {
