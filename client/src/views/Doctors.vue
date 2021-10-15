@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DoctorMenu />
+    <UserMenu />
     <Table />
     <AppointmentTable />
   </div>
@@ -9,12 +9,12 @@
 <script>
 import Table from '../components/DoctorTable.vue'
 import AppointmentTable from '../components/AppointmentTable.vue'
-import DoctorMenu from '../components/DoctorMenu.vue'
+import UserMenu from '../components/UserMenu.vue'
 export default {
   components: {
     Table,
     AppointmentTable,
-    DoctorMenu
+    UserMenu
   }
 }
 </script>

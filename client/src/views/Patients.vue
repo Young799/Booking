@@ -1,6 +1,6 @@
 <template>
   <div>
-    <patient-menu />
+    <user-menu />
     <patient-profile />
     <booking-form />
     <patient-appointment-table />
@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import PatientMenu from '../components/PatientMenu.vue'
+import UserMenu from '../components/UserMenu.vue'
 import BookingForm from '../components/BookingForm.vue'
 import PatientAppointmentTable from '../components/PatientAppointmentTable.vue'
 import PatientProfile from '../components/PatientProfile.vue'
 export default {
   components: {
-    PatientMenu,
+    UserMenu,
     PatientProfile,
     BookingForm,
     PatientAppointmentTable
@@ -37,8 +37,8 @@ export default {
 </script>
 
 <style>
-.notificationBtn{
-    background: #203344;
+.notificationBtn {
+  background: #203344;
   border: 0;
   padding: 10px 20px;
   color: white;
@@ -49,6 +49,6 @@ export default {
   font-weight: bold;
   width: 20%;
   height: 100%;
- margin-top: 10%;
+  margin-top: 10%;
 }
 </style>

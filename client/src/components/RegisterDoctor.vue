@@ -1,120 +1,122 @@
 <template>
-  <div>
-    <form class="form" @submit.prevent="handleSubmit">
-      <div class="title">Welcome</div>
-      <div class="subtitle">Let's create your account!</div>
-      <div class="row pt-2">
-        <div class="col-md">
-          <div class="input-container ic1">
-            <input
-              id="firstname"
-              class="input"
-              type="text"
-              placeholder=" "
-              required
-              v-model="firstname"
-            />
-            <div class="cut"></div>
-            <label for="firstname" class="placeholder">First name</label>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="input-container ic2">
-            <input
-              id="lastname"
-              class="input"
-              type="text"
-              placeholder=" "
-              required
-              v-model="lastname"
-            />
-            <div class="cut"></div>
-            <label for="lastname" class="placeholder">Last name</label>
-          </div>
-        </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-md">
-          <div class="input-container ic1">
-            <input
-              id="personalnumber"
-              class="input"
-              type="personalnumber"
-              placeholder=" "
-              required
-              v-model="personalnumber"
-            />
-            <div class="cut"></div>
-            <label for="personalnumber" class="placeholder"
-              >Personal number</label
-            >
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="input-container ic1">
-            <select
-              id="specialist"
-              class="input"
-              type="specialist"
-              placeholder=" "
-              required
-              v-model="specialist"
-            >
+  <div class="container">
+      <form class="form" @submit.prevent="handleSubmit">
+        <div class="title">Welcome</div>
+        <div class="subtitle">Let's create your account!</div>
+        <div class="row pt-2">
+          <div class="col-md">
+            <div class="input-container ic1">
+              <input
+                id="firstname"
+                class="input"
+                type="text"
+                placeholder=" "
+                required
+                v-model="firstname"
+              />
               <div class="cut"></div>
-              <label for="specialist" class="placeholder">Speciality</label>
-              <option value="Pediatrician">Pediatrician</option>
-              <option value="Dermatologist">Dermatologist</option>
-              <option value="Psychiatrist">Psychiatrist</option>
-              <option value="Orthopedist">Orthopedist</option>
-              <option value="Gynecologist">Gynecologist</option>
-              <option value="Surgeon">Surgeon</option>
-            </select>
+              <label for="firstname" class="placeholder">First name</label>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="input-container ic2">
+              <input
+                id="lastname"
+                class="input"
+                type="text"
+                placeholder=" "
+                required
+                v-model="lastname"
+              />
+              <div class="cut"></div>
+              <label for="lastname" class="placeholder">Last name</label>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-md">
-          <div class="input-container ic1">
-            <input
-              id="emailaddress"
-              class="input"
-              type="emailaddress"
-              placeholder=" "
-              required
-              v-model="emailaddress"
-            />
-            <div class="cut"></div>
-            <label for="emailaddress" class="placeholder">Email Address</label>
+        <div class="row pt-2">
+          <div class="col-md">
+            <div class="input-container ic1">
+              <input
+                id="personalnumber"
+                class="input"
+                type="personalnumber"
+                placeholder=" "
+                required
+                v-model="personalnumber"
+              />
+              <div class="cut"></div>
+              <label for="personalnumber" class="placeholder"
+                >Personal number</label
+              >
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="input-container ic1">
+              <select
+                id="specialist"
+                class="input"
+                type="specialist"
+                placeholder=" "
+                required
+                v-model="specialist"
+              >
+                <div class="cut"></div>
+                <label for="specialist" class="placeholder">Speciality</label>
+                <option value="Pediatrician">Pediatrician</option>
+                <option value="Dermatologist">Dermatologist</option>
+                <option value="Psychiatrist">Psychiatrist</option>
+                <option value="Orthopedist">Orthopedist</option>
+                <option value="Gynecologist">Gynecologist</option>
+                <option value="Surgeon">Surgeon</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div class="col-md">
-          <div class="input-container ic1">
-            <input
-              id="password"
-              class="input"
-              type="password"
-              placeholder=" "
-              required
-              v-model="password"
-            />
-            <div class="cut"></div>
-            <label for="password" class="placeholder">Password</label>
+        <div class="row pt-2">
+          <div class="col-md">
+            <div class="input-container ic1">
+              <input
+                id="emailaddress"
+                class="input"
+                type="emailaddress"
+                placeholder=" "
+                required
+                v-model="emailaddress"
+              />
+              <div class="cut"></div>
+              <label for="emailaddress" class="placeholder"
+                >Email Address</label
+              >
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="input-container ic1">
+              <input
+                id="password"
+                class="input"
+                type="password"
+                placeholder=" "
+                required
+                v-model="password"
+              />
+              <div class="cut"></div>
+              <label for="password" class="placeholder">Password</label>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-md">
-          <div class="submitOne">
-            <button id="submitButton" class="float-md-none">Register</button>
+        <div class="row pt-2">
+          <div class="col-md">
+            <div class="submitOne">
+              <button id="submitButton" class="float-md-none">Register</button>
+            </div>
+          </div>
+          <div class="col-md">
+            <button @click="doctorLogin" id="login" class="float-md-none">
+              Log In
+            </button>
           </div>
         </div>
-        <div class="col-md">
-          <button @click="doctorLogin" id="login" class="float-md-none">
-            Log In
-          </button>
-        </div>
-      </div>
-    </form>
+      </form>
   </div>
 </template>
 
@@ -167,11 +169,11 @@ body {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 500px;
+  height: 100%;
   padding: 20px;
-  width: 900px;
+  width: 80%;
   margin: 30px auto;
-  margin-top: 20px;
+  margin-top: 2%;
 }
 .title {
   color: #eee;
@@ -245,5 +247,12 @@ button:hover {
   font-weight: bold;
   width: 50%;
   margin: 30px auto;
+}
+
+@media screen and (max-width: 600px) {
+  .col-md, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
 }
 </style>

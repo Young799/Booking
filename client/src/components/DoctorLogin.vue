@@ -1,31 +1,44 @@
 <template>
-  <div>
-    <div class="form">
-      <div class="Welcometitle">Welcome</div>
-      <div class="subtitle">Log in to your account!</div>
-      <div class="input-container ic2">
-        <input
-          id="email"
-          class="input"
-          type="email"
-          v-model="email"
-          placeholder=" "
-        />
-        <div class="cut"></div>
-        <label for="email" class="placeholder">Email</label>
+  <div class="form">
+    <div class="Welcometitle">Welcome</div>
+    <div class="subtitle">Log in to your account!</div>
+    <div class="row pt-2">
+      <div class="col-md">
+        <div class="input-container ic2">
+          <input
+            id="email"
+            class="input"
+            type="email"
+            v-model="email"
+            placeholder=" "
+          />
+          <div class="cut"></div>
+          <label for="email" class="placeholder">Email</label>
+        </div>
       </div>
-      <div class="input-container ic1">
-        <input
-          id="password"
-          class="input"
-          type="password"
-          v-model="password"
-          placeholder=" "
-        />
-        <div class="cut"></div>
-        <label for="password" class="placeholder">password</label>
+    </div>
+
+    <div class="row pt-2">
+      <div class="col-md">
+        <div class="input-container ic1">
+          <input
+            id="password"
+            class="input"
+            type="password"
+            v-model="password"
+            placeholder=" "
+          />
+          <div class="cut"></div>
+          <label for="password" class="placeholder">password</label>
+        </div>
       </div>
-      <button type="text" class="submit" v-on:click="loginDoctor">Log In</button>
+    </div>
+    <div class="row pt-2">
+      <div class="col-md">
+        <button type="text" class="submit" v-on:click="loginDoctor">
+          Log In
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -74,18 +87,18 @@ body {
   justify-content: center;
   height: 100vh;
 }
+
 .form {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
-  height: 500px;
+  height: 70%;
   padding: 20px;
-  width: 900px;
+  width: 80%;
   margin: 30px auto;
-  margin-top: 20px;
+  margin-top: 5%;
 }
-
-.title {
+.Welcometitle {
   color: #eee;
   font-family: sans-serif;
   font-size: 36px;
@@ -126,7 +139,7 @@ body {
   outline: 0;
   padding: 4px 20px 0;
   width: 70%;
-   margin: 30px auto;
+  margin: 30px auto;
 }
 
 .cut {
