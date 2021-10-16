@@ -17,6 +17,7 @@ router.post('/api/login', function (req, res) {
     const email = req.body.email_address;
     const password = req.body.password;
     // checking if patient exists in the database
+
     Patient.findOne({email_address : email }, function (err, foundPatient) {
        if(err){
            console.log(err);
@@ -25,27 +26,29 @@ router.post('/api/login', function (req, res) {
             if (foundPatient.password === password) {
                 res.status(201).json(foundPatient)
             }else{
-                return res.status(404).json({ 'message': 'Incorrect password' })
+                console.log('hello');
+                return res.status(401).json({ 'message': 'Incorrect password' })
             }
         }else{
-            return res.status(404).json({ 'message': 'Incorrect Email' })
+            console.log('helloooo');
+            return res.status(401).json({ 'message': 'Incorrect Email' })
         }
     }
-    });    
+    });
    });
 
 
 //retrieve patients collection and sorting when adding ?sortBy=lastName in postman
 router.get('/api/patients', function(req,res,next){
-    let sort = req.query.sortBy;  
-    Patient.find({}).sort(sort).exec(function(err, patients) { 
+    let sort = req.query.sortBy;
+    Patient.find({}).sort(sort).exec(function(err, patients) {
                 if (!patients) {
                     return res.status(404).json({
                         message: 'can not find any patients'
                     });
                 }
                 res.status(200).json({'patients': patients });
-            }); 
+            });
     });
 
 //get individual patient
@@ -58,7 +61,7 @@ router.get('/api/patients/:id',async (req, res)=>{
     }
 });
 
- //Update the individual patient with PUT 
+ //Update the individual patient with PUT
  router.put('/api/patients/:id', function (req, res, next) {
     const patient = Patient.findById({ _id: req.params.id })
     Patient.findByIdAndUpdate({ _id: req.params.id }, req.body, { new: true }).then(function (patient) {
@@ -66,7 +69,7 @@ router.get('/api/patients/:id',async (req, res)=>{
     })
 });
 
-//update the individual patient with first  
+//update the individual patient with first
 router.patch('/api/patients/:id', async(req, res)=>{
     const updated_patient= await Patient.updateOne(
     {_id:req.params.id},
@@ -75,11 +78,11 @@ router.patch('/api/patients/:id', async(req, res)=>{
         return res.status(204).json({
             message: "This patient does not exists"
         });
-    } 
+    }
     res.status(200).json(updated_patient);
 });
 
-//delate individual patient 
+//delate individual patient
 router.delete('/api/patients/:id', async (req, res)=>{
     try{
         const removed_patient= await Patient.remove({_id:req.params.id});
@@ -87,6 +90,6 @@ router.delete('/api/patients/:id', async (req, res)=>{
     }catch(err){
         res.status(404).json({message:"ID invalid"});
     }
-}); 
+});
 
 module.exports = router;

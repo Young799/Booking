@@ -147,7 +147,7 @@ export default {
           alert('Doctor registered')
         })
         .catch((error) => {
-          alert(error)
+          alert(error.response.data.message)
         })
     },
     doctorLogin() {

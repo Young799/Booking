@@ -28,13 +28,14 @@ router.post('/api/logindoctors', function (req, res) {
                 return res.status(404).json({ 'message': 'Incorrect password' })
             }
         }else{
+            console.log('hello')
             return res.status(404).json({ 'message': 'Incorrect Email' })
         }
     }
-    });    
+    });
    });
 
-//get doctor collection 
+//get doctor collection
 router.get('/api/doctors',async (req,res)=>{
     try{
         const doctors=await Doctor.find();
@@ -43,7 +44,7 @@ router.get('/api/doctors',async (req,res)=>{
         res.status(404).json({error:"The doctors are not found"});
     }
 });
-//delete the individual doctor 
+//delete the individual doctor
 router.delete('/api/doctors/:id', async (req, res)=>{
     try{
         const removed_doctor= await Doctor.remove({_id:req.params.id});

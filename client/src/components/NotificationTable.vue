@@ -62,7 +62,7 @@ export default {
           this.getNofications()
         })
         .catch((error) => {
-          alert(error)
+          alert(error.response.data.message)
         })
     }
   }

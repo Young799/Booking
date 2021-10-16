@@ -4,35 +4,35 @@ var Appointment = require('../models/appointment');
 var Patient = require('../models/patient');
 var Doctor = require('../models/doctor');
 
-// posting an appointment request 
+// posting an appointment request
 router.post('/api/patients/:patient_id/appointments', async function(req, res, next){
         const patient=await Patient.findById(req.params.patient_id);
         var  appointment= new Appointment({
-            appointment_date:req.body.appointment_date, 
+            appointment_date:req.body.appointment_date,
             time:req.body.time,
             patient: patient,
             is_confirmed:false
         });
         appointment.save(function(err, appointment){
-        
+
         if (err) { return next(err); }
         res.status(201).json(appointment);
     })
-}); 
+});
 
 
-//For assigning a doctor to an appointment 
+//For assigning a doctor to an appointment
 router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
     const { doctor_id, appointment_id } = req.params;
-    
+
         Appointment.findById(appointment_id, (error, appointment) => {
         if (error) return res.status(500).json(error);
         if (appointment === null) return res.status(404).json({message: `Appointment with id: ${appointment_id} not found`});
-        
+
         Doctor.findById(doctor_id, (err, doctor) => {
             if (err) return res.status(500).json(err);
             if (doctor === null) return res.status(404).json({ message: 'Doctor not found' });
-            
+
             appointment.is_confirmed = true;
             appointment.doctor = doctor;
 
@@ -52,10 +52,10 @@ router.get('/api/patients/:patient_id/appointments', async function(req, res, ne
         });
     }
     res.status(200).json({ 'appointment': appointment });
-    }).populate('doctor');
+    }).populate('patient', ['first_name']).populate('doctor', ['first_name']);
 });
 
-// Getting a specific appointment for one patient 
+// Getting a specific appointment for one patient
 router.get('/api/patients/:patient_id/appointments/:appointment_id',  function (req, res, next) {
     var appointment= Appointment.findById(req.params.appointment_id);
     appointment.find({'patient': req.params.patient_id }, function (err, appointment) {
@@ -68,7 +68,7 @@ router.get('/api/patients/:patient_id/appointments/:appointment_id',  function (
     });
 });
 
-// Deleting a specifik appointment for one patient 
+// Deleting a specifik appointment for one patient
 router.delete('/api/patients/:patient_id/appointments/:appointment_id',  function(req, res, next){
     var appointment= Appointment.findById(req.params.appointment_id);
     appointment.remove({ 'patient': req.params.patient_id }, function (err, appointment) {
@@ -97,20 +97,20 @@ router.delete('/api/appointments/:id',async (req,res)=>{
     }catch(err){
         res.status(404).json({message:"ID invalid"});
     }
-}); 
+});
 
-// Getting all appointments 
+// Getting all appointments
 router.get('/api/appointments',async (req,res)=>{
     try{
       //  const appointment=await Appointment.find().populate ({path:'patient' , populate :{path :'doctor'}}).exec();
       const appointment=await Appointment.find().populate ('patient').populate('doctor').exec();
         res.status(200).json(appointment)
-        console.log(appointment) 
+        console.log(appointment)
 
     }catch(err){
         res.json({message:err});
     }
 });
 
-     
+
 module.exports=router;
