@@ -20,7 +20,6 @@ router.post('/api/patients/:patient_id/appointments', async function(req, res, n
     })
 }); 
 
-
 //For assigning a doctor to an appointment 
 router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, res)=>{
     const { doctor_id, appointment_id } = req.params;
@@ -41,7 +40,6 @@ router.patch('/api/appointments/:appointment_id/doctors/:doctor_id', async(req, 
           });
     })
 });
-
 
 // Getting one patients appointments
 router.get('/api/patients/:patient_id/appointments', async function(req, res, next){
