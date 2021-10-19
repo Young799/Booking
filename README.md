@@ -78,11 +78,14 @@ The purpose is to make it easier for the patients to find the proper help  accor
 
 ## Teaser (MS3)
 
-### Home Screen
+## Home Screen
+
 ![HomeScreen](./server/images/homescreen.png)
 
-### Patients page 
+## Patients page 
+
 ![Patientspage](./server/images/patientpage.png)
 
-### Doctors page 
-![Doctorpage](./server/images/docotors.png)
+## Doctors page 
+
+![Doctorpage](./server/images/docotorspage.png)
