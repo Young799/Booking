@@ -1,13 +1,13 @@
 <template>
   <div class="booking">
-    <b-container fluid>
+    <b-container>
       <div class="row pt-2">
-        <div class="col-8">
+        <div class="col-12">
           <h2 class="menu_1">Request Appointment</h2>
         </div>
       </div>
-      <div class="row pt-2">
-        <div class="col-8">
+      <div class="row">
+        <div class="col-12">
           <label for="bookinginfo1">Enter your wished booking date:</label>
           <input
             type="text"
@@ -17,7 +17,7 @@
             placeholder="yyyy-mm-dd"
           />
         </div>
-        <div class="col-8">
+        <div class="col-12">
           <label for="bookinginfo2">Enter your wished booking time:</label>
           <input
             type="text"
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="row pt-2">
-        <div class="col-8">
+        <div class="col-12">
           <button type="button" class="send" v-on:click="sendRequest">
             Send request
           </button>
