@@ -11,8 +11,7 @@
           <th>Appointment Date</th>
           <th>Time</th>
           <th>Patient</th>
-          <th>doctor first name</th>
-          <th>doctor last name</th>
+          <th>Doctor</th>
           <th>Confirmed</th>
           <th></th>
           <th></th>
@@ -21,7 +20,7 @@
       <tr v-for="appointment in list" v-bind:key="appointment._id">
         <td>{{ appointment.appointment_date }}</td>
         <td>{{ appointment.time }}</td>
-        <td>{{ appointment.patient.first_name}}</td>
+        <td>{{ appointment.patient}}</td>
         <td>{{ appointment.doctor }}</td>
         <td>{{ appointment.is_confirmed }}</td>
         <td>
