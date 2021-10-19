@@ -88,4 +88,4 @@ The purpose is to make it easier for the patients to find the proper help  accor
 
 ## Doctors page 
 
-![Doctorpage](./server/images/docotorspage.png)
+![Doctorpage](./server/images/doctorspage.png)
