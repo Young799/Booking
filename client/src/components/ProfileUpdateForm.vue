@@ -127,7 +127,7 @@ export default {
             }
           })
           .catch((error) => {
-            alert(error)
+            alert(error.response.data.message)
           })
       } else {
         alert('Your confirmed password is not match with your password')

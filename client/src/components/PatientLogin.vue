@@ -1,45 +1,45 @@
 <template>
-    <div class="form">
-      <div class="Welcometitle">Welcome</div>
-      <div class="subtitle">Log in to your account!</div>
-      <div class="row pt-2">
-        <div class="col-md">
-          <div class="input-container ic2">
-            <input
-              id="email"
-              class="input"
-              type="email"
-              v-model="email"
-              placeholder=" "
-            />
-            <div class="cut"></div>
-            <label for="email" class="placeholder">Email</label>
-          </div>
-        </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-md">
-          <div class="input-container ic1">
-            <input
-              id="password"
-              class="input"
-              type="password"
-              v-model="password"
-              placeholder=" "
-            />
-            <div class="cut"></div>
-            <label for="password" class="placeholder">password</label>
-          </div>
-        </div>
-      </div>
-      <div class="row pt-2">
-        <div class="col-md">
-          <button type="text" class="submit" v-on:click="loginPatient">
-            Log In
-          </button>
+  <div class="form">
+    <div class="Welcometitle">Welcome</div>
+    <div class="subtitle">Log in to your account!</div>
+    <div class="row pt-2">
+      <div class="col-md">
+        <div class="input-container ic2">
+          <input
+            id="email"
+            class="input"
+            type="email"
+            v-model="email"
+            placeholder=" "
+          />
+          <div class="cut"></div>
+          <label for="email" class="placeholder">Email</label>
         </div>
       </div>
     </div>
+    <div class="row pt-2">
+      <div class="col-md">
+        <div class="input-container ic1">
+          <input
+            id="password"
+            class="input"
+            type="password"
+            v-model="password"
+            placeholder=" "
+          />
+          <div class="cut"></div>
+          <label for="password" class="placeholder">password</label>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-2">
+      <div class="col-md">
+        <button type="text" class="submit" v-on:click="loginPatient">
+          Log In
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -72,7 +72,7 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error)
+          console.warn(error.response.data.message)
         })
     }
   }

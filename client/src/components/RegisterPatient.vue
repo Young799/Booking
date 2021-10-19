@@ -128,12 +128,10 @@ export default {
       })
         .then((response) => {
           alert('You are now registered')
-          // if (result.status === 201) {
           this.$router.push('/patients/login')
-          // }
         })
         .catch((error) => {
-          alert(error)
+          alert(error.response.data.message)
         })
     },
     patientLogin() {
@@ -276,7 +274,7 @@ body {
   background-color: rgb(115, 126, 134);
 }
 #login-patient {
-background: #415c96;
+  background: #415c96;
   border: 0;
   padding: 10px 20px;
   margin-top: 20px;
