@@ -74,8 +74,18 @@ The purpose is to make it easier for the patients to find the proper help  accor
 
 ### Entity-Relationship (ER) Diagram
 
-![ER Diagram](./images/entity_diagram.png)
+![ER Diagram](./server/images/ER-diagram.png)
 
 ## Teaser (MS3)
 
-![Teaser](./images/teaser.png)
+## Home Screen
+
+![HomeScreen](./server/images/homescreen.png)
+
+## Patients page 
+
+![Patientspage](./server/images/patientpage.png)
+
+## Doctors page 
+
+![Doctorpage](./server/images/doctorspage.png)
