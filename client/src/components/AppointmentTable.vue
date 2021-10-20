@@ -20,8 +20,8 @@
       <tr v-for="appointment in list" v-bind:key="appointment._id">
         <td>{{ appointment.appointment_date }}</td>
         <td>{{ appointment.time }}</td>
-        <td>{{ appointment.patient}}</td>
-        <td>{{ appointment.doctor }}</td>
+        <td>{{ appointment.patient.first_name}}</td>
+        <td>{{ appointment.doctor.first_name }}</td>
         <td>{{ appointment.is_confirmed }}</td>
         <td>
           <button

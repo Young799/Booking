@@ -11,6 +11,7 @@ router.post('/api/patients/:patient_id/appointments', async function (req, res, 
         appointment_date: req.body.appointment_date,
         time: req.body.time,
         patient: patient,
+        doctor: req.body.doctor,
         is_confirmed: false
     });
     appointment.save(function (err, appointment) {
@@ -50,7 +51,7 @@ router.get('/api/patients/:patient_id/appointments', async function (req, res, n
             });
         }
         res.status(200).json({ 'appointment': appointment });
-    }).populate('patient')
+    }).populate('patient').populate('doctor')
 });
 
 // Getting a specific appointment for one patient 
@@ -100,7 +101,7 @@ router.delete('/api/appointments/:id', async (req, res) => {
 // Getting all appointments 
 router.get('/api/appointments', async (req, res) => {
     try {
-        const appointment = await Appointment.find();
+        const appointment = await Appointment.find().populate ('patient').populate('doctor').exec();
         res.status(200).json(appointment);
     } catch (err) {
         res.status(404).json({ message: err });
