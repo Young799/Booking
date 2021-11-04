@@ -25,7 +25,7 @@ router.post('/api/logindoctors', function (req, res) {
                 } else {
                     return res.status(404).json({ 'message': 'Incorrect password' })
                 }
-            } else {
+           } else {
                 return res.status(404).json({ 'message': 'Incorrect Email' })
             }
         }

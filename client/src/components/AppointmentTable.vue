@@ -81,7 +81,7 @@ export default {
         '/appointments/' + id + '/doctors/' + this.$route.params.id
       ).then(() => {
         this.getData()
-        Api.post('patients/' + patient + '/notifications/', {
+        Api.post('/patients/' + patient._id + '/notifications/', {
           appointment_date: date,
           appointment_time: time
         }).then(() => {})
