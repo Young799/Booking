@@ -1,11 +1,11 @@
 <template>
   <div>
     <b-navbar
+      id="b-navbar"
       toggleable="lg"
       type="light"
       class="navbar navbar-expand-lg navbar-dark"
       style="background-color: #172531"
-      sticky="true"
     >
       <b-navbar-brand href="#">WECARE4YOU</b-navbar-brand>
 
@@ -22,3 +22,8 @@
     </b-navbar>
   </div>
 </template>
+
+<style>
+#b-navbar {
+  position: sticky
+}</style>

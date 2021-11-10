@@ -21,12 +21,14 @@ import UserMenu from '../components/UserMenu.vue'
 import BookingForm from '../components/BookingForm.vue'
 import PatientAppointmentTable from '../components/PatientAppointmentTable.vue'
 import PatientProfile from '../components/PatientProfile.vue'
+
 export default {
   components: {
     UserMenu,
     PatientProfile,
     BookingForm,
     PatientAppointmentTable
+
   },
   methods: {
     getAllNotification() {

@@ -33,6 +33,7 @@
 import { Api } from '@/Api.js'
 // import AppointmentVue from '../components/Appointment.vue'
 export default {
+  name: 'Notification',
   data() {
     return {
       list: undefined
@@ -44,9 +45,10 @@ export default {
   methods: {
     getNofications() {
       Api.get(`/patients/${this.$route.params.id}/notifications`).then(
-        (response) => {
-          console.log(response)
+        response => {
           this.list = response.data.notification
+          console.log(this.list)
+          console.log('page loaded')
         }
       )
     },
@@ -55,13 +57,13 @@ export default {
         '/patients/' + this.$route.params.id + '/notifications/' + id,
         {}
       )
-        .then((response) => {
+        .then(response => {
           alert('Notification deleted')
           console.log(response)
           this.list = response.data.notification
           this.getNofications()
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.response.data.message)
         })
     }
@@ -69,5 +71,4 @@ export default {
 }
 // }
 </script>
-<style>
-</style>
+<style></style>

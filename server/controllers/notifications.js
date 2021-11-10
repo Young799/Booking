@@ -9,7 +9,7 @@ router.post('/api/patients/:patient_id/notifications', async function (req, res,
         text: 'Your appointment has been approved',
         appointment_date: req.body.appointment_date,
         appointment_time: req.body.appointment_time,
-        patient: patient._id
+        patient: patient
     });
     notification.save(function (err, notification) {
 
@@ -18,8 +18,8 @@ router.post('/api/patients/:patient_id/notifications', async function (req, res,
     })
 });
 
-router.get('/api/patients/:patient_id/notifications', async function (req, res, next) {
-    await Notification.find({ 'patient': req.params.patient_id }, function (err, notification) {
+router.get('/api/patients/:patient_id/notifications', function (req, res, next) {
+      Notification.find({ 'patient': req.params.patient_id }, function (err, notification) {
         if (!notification) {
             return res.status(404).json({
                 message: "There are no notifications"
@@ -28,6 +28,7 @@ router.get('/api/patients/:patient_id/notifications', async function (req, res, 
         res.status(200).json({ 'notification': notification });
     });
 });
+
 
 router.delete('/api/patients/:patient_id/notifications/:notification_id', function (req, res, next) {
     var notification = Notification.findById(req.params.notification_id);

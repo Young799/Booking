@@ -68,9 +68,8 @@ router.put('/api/patients/:id', async (req, res) => {
 
 //Update the individual patient with first  
 router.patch('/api/patients/:id', async (req, res) => {
-    const updated_patient = await Patient.updateOne(
-        { _id: req.params.id },
-        { $set: { first_name: req.body.first_name } });
+    const updated_patient = await Patient.updateOne({ _id: req.params.id }, { $set: { first_name: req.body.first_name } });
+           
     if (!updated_patient) {
         return res.status(404).json({
             message: "This patient does not exists"

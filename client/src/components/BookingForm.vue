@@ -47,7 +47,8 @@ export default {
     return {
       booking: {
         date: '',
-        time: ''
+        time: '',
+        doctor: ''
       }
     }
   },
@@ -55,7 +56,8 @@ export default {
     sendRequest() {
       Api.post(`/patients/${this.$route.params.id}/appointments`, {
         appointment_date: this.booking.date,
-        time: this.booking.time
+        time: this.booking.time,
+        doctor: { _id: '616f0ee6e5a81d2ebcb663f8' }
       })
         .then((response) => {
           alert('Do you want to send a booking request')
