@@ -15,7 +15,7 @@ Latest version: https://git.ita.chalmers.se/courses/dit341/group-00-web (public 
 
 ## Requirements
 
-The version numbers in brackets indicate the tested versions but feel free to use more recent versions...
+The version numbers in brackets indicate the tested versions but feel free to use more recent versions.
 You can also use alternative tools if you know how to configure them (e.g., Firefox instead of Chrome).
 
 * [Git](https://git-scm.com/) (v2) => [installation instructions](https://www.atlassian.com/git/tutorials/install-git)
