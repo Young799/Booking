@@ -57,7 +57,7 @@ export default {
       Api.post(`/patients/${this.$route.params.id}/appointments`, {
         appointment_date: this.booking.date,
         time: this.booking.time,
-        doctor: { _id: '616f0ee6e5a81d2ebcb663f8' }
+        doctor: { _id: '618c1b29fdddc252ece43533' }
       })
         .then((response) => {
           alert('Do you want to send a booking request')
