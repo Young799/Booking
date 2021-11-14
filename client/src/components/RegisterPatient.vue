@@ -127,7 +127,6 @@ export default {
         confirmPassword: this.confirmpassword
       })
         .then((response) => {
-          alert('You are now registered')
           this.$router.push('/patients/login')
         })
         .catch((error) => {

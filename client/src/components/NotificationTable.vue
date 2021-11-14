@@ -58,7 +58,6 @@ export default {
         {}
       )
         .then(response => {
-          alert('Notification deleted')
           console.log(response)
           this.list = response.data.notification
           this.getNofications()
