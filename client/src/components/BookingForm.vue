@@ -57,7 +57,7 @@ export default {
       Api.post(`/patients/${this.$route.params.id}/appointments`, {
         appointment_date: this.booking.date,
         time: this.booking.time,
-        doctor: { _id: '61915563f2e5bf1514b323d9' }
+        doctor: { _id: '61915563f2e5bf1514b323d9' } // update with mongoDB atlas
       })
         .then(response => {
           alert('Do you want to send a booking request')
