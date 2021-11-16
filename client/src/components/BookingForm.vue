@@ -1,5 +1,5 @@
 <template>
-  <div class="booking">
+  <div class="booking" data-server-rendered="true">
     <b-container>
       <div class="row pt-2">
         <div class="col-12">
