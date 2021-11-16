@@ -66,7 +66,6 @@ export default {
             this.email === response.data.email_address ||
             this.password === response.data.password
           ) {
-            alert(response.data._id)
             const userId = response.data._id
             this.$router.push(`/booking/${userId}`)
           }

@@ -141,10 +141,10 @@ export default {
         email_address: this.emailaddress,
         password: this.password
       })
-        .then((response) => {
-          alert('Doctor registered')
+        .then(response => {
+          alert('Is your all information correct?')
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.response.data.message)
         })
     },

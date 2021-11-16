@@ -29,6 +29,7 @@
         </td>
       </tr>
     </table>
+
     <button id="deleteButton" v-on:click="deleteDoctors()">Delete All</button>
   </div>
 </template>
@@ -47,7 +48,7 @@ export default {
   },
   methods: {
     getData() {
-      Api.get('/doctors').then((response) => {
+      Api.get('/doctors').then(response => {
         this.list = response.data
         console.warn(response.data)
       })
@@ -58,7 +59,7 @@ export default {
       })
     },
     deleteDoctor(id) {
-      Api.delete('/doctors/' + id).then((response) => {
+      Api.delete('/doctors/' + id).then(response => {
         this.getData()
       })
     }
@@ -66,7 +67,7 @@ export default {
 }
 </script>
 
- <style>
+<style>
 body {
   height: 100vh;
   display: grid;

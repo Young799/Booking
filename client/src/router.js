@@ -62,7 +62,7 @@ export default new Router({
     },
     {
       path: '/doctorslogin',
-      name: 'doctorlogin',
+      name: 'doctorslogin',
       component: DoctorLogin
     },
     {
