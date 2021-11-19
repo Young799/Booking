@@ -35,7 +35,7 @@
                 </div>
               </div>
               <div class="row pt-2">
-                <div class="col-md-12">
+                <div class="col-lg-12">
                   <label for="email">Email:</label>
                   <input
                     type="text"
