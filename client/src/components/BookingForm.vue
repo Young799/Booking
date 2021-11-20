@@ -72,12 +72,9 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .booking {
   margin: 30px auto;
-}
-.form-control {
-  width: 100px;
 }
 .menu_1 {
   font-family: Impact, Charcoal, sans-serif;

@@ -7,7 +7,7 @@
         label="First Name:"
         label-for="First_name"
       >
-        <b-form-input
+        <b-form-input class="s"
           id="First_name"
           v-model="patient.first_name"
           type="text"
