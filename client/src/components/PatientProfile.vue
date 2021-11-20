@@ -4,7 +4,8 @@
       <!-- <patient-info v-bind:patient="patient" /> -->
     </div>
     <b-container fluid>
-      <span>
+      <span
+        ><body>
           <div class="container">
             <h1>Hello {{ patient.first_name }}, Welcome to care 4 you !</h1>
             <div class="profile">
@@ -68,6 +69,7 @@
               </div>
             </div>
           </div>
+        </body>
       </span>
     </b-container>
   </div>
