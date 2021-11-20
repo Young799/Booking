@@ -5,7 +5,7 @@
     </div>
     <b-container fluid>
       <span
-        ><body>
+        >
           <div class="container">
             <h1>Hello {{ patient.first_name }}, Welcome to care 4 you !</h1>
             <div class="profile">
@@ -35,7 +35,7 @@
                 </div>
               </div>
               <div class="row pt-2">
-                <div class="col-lg-12">
+                <div class="col-md-12">
                   <label for="email">Email:</label>
                   <input
                     type="text"
@@ -69,7 +69,7 @@
               </div>
             </div>
           </div>
-        </body>
+      
       </span>
     </b-container>
   </div>

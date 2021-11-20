@@ -142,7 +142,8 @@ export default {
         password: this.password
       })
         .then(response => {
-          alert('Is your all information correct?')
+          alert('you are registered now :)')
+          this.$router.push('/doctorslogin')
         })
         .catch(error => {
           alert(error.response.data.message)
