@@ -1,59 +1,77 @@
 <template>
-<div class="container">
-   <h1>Hello {{ patient.first_name }}, Welcome to care 4 you !</h1>
-   <h2>User Profile</h2>
-    <b-form @submit="updatePersonalInfo">
-      <b-form-group class="formStyls"
-        label="First Name:"
-        label-for="First_name"
-      >
-        <b-form-input class="s"
-          id="First_name"
-          v-model="patient.first_name"
-          type="text"
-          placeholder="your First name"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group class="formStyls"
-        label="Last Name:"
-        label-for="First_name"
-      >
-        <b-form-input
-          id="Last_name"
-          v-model="patient.last_name"
-          type="text"
-          placeholder="your Last name"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group class="formStyls"
-        label= "Email:"
-        label-for="email"
-      >
-        <b-form-input
-          id="email"
-          v-model="patient.email_address"
-          type="email"
-          placeholder="email"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-form-group class="formStyls"
-        label="current passowrd:"
-        label-for="current passowrd"
-      >
-        <b-form-input
-          id="current_passowrd"
-          v-model="patient.current_passowrd"
-          type="text"
-          placeholder="current password"
-          required
-        ></b-form-input>
-      </b-form-group>
-      <b-button class="mx-3 bdark" pill type="submit" variant="primary">UPDATE PROFILE</b-button>
-      <b-button class="mx-3" pill @click="removePatient" variant="danger">DELETE ACCOUNT</b-button>
-    </b-form>
+  <div class="patient-profile">
+    <div v-bind:key="patient._id">
+      <!-- <patient-info v-bind:patient="patient" /> -->
+    </div>
+    <b-container fluid>
+      <span
+        ><body>
+          <div class="container">
+            <h1>Hello {{ patient.first_name }}, Welcome to care 4 you !</h1>
+            <div class="profile">
+              <br />
+              <h2>User Profile</h2>
+
+              <div class="row pt-4">
+                <div class="col-md-12">
+                  <label for="firstname">First name:</label>
+                  <input
+                    type="text"
+                    name="firstname"
+                    v-model="patient.first_name"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label for="lastname">Last name:</label>
+                  <input
+                    type="text"
+                    name="lastname"
+                    v-model="patient.last_name"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="row pt-2">
+                <div class="col-md-12">
+                  <label for="email">Email:</label>
+                  <input
+                    type="text"
+                    name="email"
+                    v-model="patient.email_address"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="row pt-2">
+                <div class="col-12">
+                  <label for="password">Current password:</label>
+                  <input
+                    type="text"
+                    name="password"
+                    v-model="patient.password"
+                    placeholder="Enter new password here"
+                    class="form-control"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="row pt-4 col-md-12 text-under float-right">
+                <button class="update" v-on:click="updatePersonalInfo">
+                  Update profile
+                </button>
+                <button class="deleteAccount" v-on:click="removePatient">
+                  Delete Account
+                </button>
+              </div>
+            </div>
+          </div>
+        </body>
+      </span>
+    </b-container>
   </div>
 </template>
 
@@ -126,16 +144,34 @@ export default {
   }
 }
 </script>
-<style scopped>
-.formStyls{
-  text-align: left;
+
+<style>
+.patient-profile {
+  margin: 30px auto;
 }
-.container{
-  margin-right: 3rem;
-   margin-left: 3rem;
+.deleteAccount {
+  background: #415c96;
+  border: 0;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 15%;
+  margin-left: 2%;
 }
-.bdark{
-  background: #415c96 !important;
-  border-color:  #415c96 !important;
+.update {
+  background: #415c96;
+  border: 0;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  width: 15%;
 }
 </style>
