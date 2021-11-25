@@ -7,11 +7,12 @@
       <span
         ><body>
           <div class="container">
-            <h1>Hello {{ patient.first_name }}, Welcome to care 4 you !</h1>
+            <div class="textColor">
+            <h1  style="color:white;">Hello {{ patient.first_name }}, Welcome to care 4 you !</h1>
             <div class="profile">
               <br />
-              <h2>User Profile</h2>
-
+              <h2 style="color:white;">User Profile</h2>
+            </div>
               <div class="row pt-4">
                 <div class="col-md-12">
                   <label for="firstname">First name:</label>
