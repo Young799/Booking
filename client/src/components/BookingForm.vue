@@ -61,6 +61,7 @@ export default {
       })
         .then(response => {
           alert('Do you want to send a booking request')
+          this.$router.go()
           console.log(response)
         })
 
