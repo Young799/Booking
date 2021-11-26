@@ -56,12 +56,13 @@ export default {
     sendRequest() {
       Api.post(`/patients/${this.$route.params.id}/appointments`, {
         appointment_date: this.booking.date,
-        time: this.booking.time,
-        doctor: { _id: '61915563f2e5bf1514b323d9' } // update with mongoDB atlas
-      })
+        time: this.booking.time
+      //  doctor: { _id: '616f0ee6e5a81d2ebcb663f8' } // update with mongoDB atlas
+      }) // 61915563f2e5bf1514b323d9
         .then(response => {
           alert('Do you want to send a booking request')
           console.log(response)
+          this.$router.go()
         })
 
         .catch(error => {

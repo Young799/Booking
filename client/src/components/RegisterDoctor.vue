@@ -143,6 +143,7 @@ export default {
       })
         .then(response => {
           alert('Is your all information correct?')
+          this.$router.push('/doctorslogin')
         })
         .catch(error => {
           alert(error.response.data.message)

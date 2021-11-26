@@ -7,11 +7,14 @@ var Doctor = require('../models/doctor');
 // posting an appointment request 
 router.post('/api/patients/:patient_id/appointments', async function (req, res, next) {
     const patient = await Patient.findById(req.params.patient_id);
+    var requestDoctor = '{"first_name" : "requested"}';
+    var doctorObject = JSON.parse(requestDoctor)
     var appointment = new Appointment({
         appointment_date: req.body.appointment_date,
         time: req.body.time,
         patient: patient,
-        doctor: req.body.doctor,
+        doctor: doctorObject,
+       // doctor: req.body.doctor,
         is_confirmed: false
     });
     appointment.save(function (err, appointment) {

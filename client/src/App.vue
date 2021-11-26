@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" data-server-rendered="true">
     <!-- Render the content of the current page view -->
     <router-view />
     <Footer />

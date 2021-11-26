@@ -4,20 +4,21 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Trirong"
     />
-    <h2 class="appointmentTitle">Requested Appointments</h2>
-    <table class="appointmentTable">
+    <h2 class="appointmentTitle">Confirmed Appointments</h2>
+    <table   class="appointmentTable">
       <tr>
-      <!-- <th>Appointment Id</th> -->
+        <!-- <th>Appointment Id</th> -->
         <th>Appointment Date</th>
         <th>Appointment Time</th>
+        <th>Doctor</th>
         <th>Confirmed</th>
         <th></th>
       </tr>
-      <tr v-for="appointment in list" v-bind:key="appointment._id">
-       <!-- <td>{{ appointment._id }}</td> -->
+      <tr v-for="appointment in list"  v-bind:key="appointment._id">
         <td>{{ appointment.appointment_date }}</td>
         <td>{{ appointment.time }}</td>
-        <td>{{ appointment.is_confirmed }}</td>
+        <td>{{ appointment.doctor }}</td>
+        <td >{{ appointment.is_confirmed }}</td>
         <td>
           <button
             id="cancleButton"
@@ -46,24 +47,30 @@ export default {
   methods: {
     getAppointments() {
       Api.get(`/patients/${this.$route.params.id}/appointments`).then(
-        (response) => {
+        response => {
           console.log(response)
           this.list = response.data.appointment
         }
       )
+    },
+    // filter for is_confirmed=true then save into new array
+    computed: {
+      confirmedAppointment: function () {
+        if (this.list.is_confirmed === true) { return this.list }
+      }
     },
     cancleAppointment(id) {
       Api.delete(
         '/patients/' + this.$route.params.id + '/appointments/' + id,
         {}
       )
-        .then((response) => {
+        .then(response => {
           alert('Are you sure to cancle this booking?')
           console.log(response)
           this.list = response.data.appointment
           this.getAppointments()
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.response.data.message)
         })
     }
