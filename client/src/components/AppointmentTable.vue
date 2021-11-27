@@ -17,7 +17,7 @@
           <th>Delete</th>
         </tr>
       </thead>
-      <tbody v-for="appointment in list" v-bind:key="appointment._id">
+      <tbody  v-for="appointment in list" v-bind:key="appointment._id">
         <tr v-if="appointment.is_confirmed">
           <td>{{ appointment.appointment_date }}</td>
           <td>{{ appointment.time }}</td>

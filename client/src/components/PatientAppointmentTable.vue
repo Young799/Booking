@@ -6,12 +6,14 @@
     />
     <h2 class="appointmentTitle">Requested Appointments</h2>
     <table class="appointmentTable">
+      <thead>
       <tr >
         <th>Appointment Date</th>
         <th>Appointment Time</th>
         <th>Status<th>
         <th></th>
       </tr>
+      </thead>
       <tbody v-for="appointment in list"  v-bind:key="appointment._id">
         <tr v-if="!appointment.is_confirmed">
         <td>{{ appointment.appointment_date }}</td>
@@ -89,4 +91,5 @@ export default {
   width: 80%;
   margin: 5px auto;
 }
+
 </style>
