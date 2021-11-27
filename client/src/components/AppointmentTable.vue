@@ -13,16 +13,44 @@
           <th>Patient</th>
           <th>Doctor</th>
           <th>Confirmed</th>
-          <th></th>
-          <th></th>
+          <th>Confirm</th>
+          <th>Delete</th>
         </tr>
       </thead>
-      <tr v-for="appointment in list" v-bind:key="appointment._id">
-        <td>{{ appointment.appointment_date }}</td>
-        <td>{{ appointment.time }}</td>
-        <td>{{ appointment.patient.first_name}}</td>
-        <td>{{ appointment.doctor.first_name }}</td>
-        <td>{{ appointment.is_confirmed }}</td>
+      <tbody v-for="appointment in list" v-bind:key="appointment._id">
+        <tr v-if="appointment.is_confirmed">
+          <td>{{ appointment.appointment_date }}</td>
+          <td>{{ appointment.time }}</td>
+          <td>{{ appointment.patient.first_name}}</td>
+          <td>{{ appointment.doctor.first_name}}</td>
+          <td>{{ appointment.is_confirmed }}</td>
+          <td>
+           <button
+              id="editButton"
+              v-on:click="
+               editAppointment(
+                 appointment._id,
+                 appointment.patient,
+                 appointment.appointment_date,
+                 appointment.time)  ">
+              Confirm
+            </button>
+          </td>
+          <td>
+          <button
+            id="delButton"
+            v-on:click="deleteAppointment(appointment._id)"
+          >
+            Delete
+          </button>
+         </td>
+        </tr>
+        <tr v-else>
+          <td>{{ appointment.appointment_date }}</td>
+          <td>{{ appointment.time }}</td>
+          <td>{{ appointment.patient.first_name}}</td>
+          <td>{{""}}</td>
+          <td>{{ appointment.is_confirmed }}</td>
         <td>
           <button
             id="editButton"
@@ -46,7 +74,8 @@
             Delete
           </button>
         </td>
-      </tr>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>

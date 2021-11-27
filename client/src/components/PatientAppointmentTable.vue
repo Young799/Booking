@@ -6,27 +6,27 @@
     />
     <h2 class="appointmentTitle">Requested Appointments</h2>
     <table class="appointmentTable">
-      <tr>
-      <!-- <th>Appointment Id</th> -->
+      <tr >
         <th>Appointment Date</th>
         <th>Appointment Time</th>
-        <th>Confirmed</th>
+        <th>Status<th>
         <th></th>
       </tr>
-      <tr v-for="appointment in list" v-bind:key="appointment._id">
-       <!-- <td>{{ appointment._id }}</td> -->
+      <tbody v-for="appointment in list"  v-bind:key="appointment._id">
+        <tr v-if="appointment.is_confirmed">
         <td>{{ appointment.appointment_date }}</td>
         <td>{{ appointment.time }}</td>
-        <td>{{ appointment.is_confirmed }}</td>
+        <td>{{ "under review" }}</td>
         <td>
           <button
             id="cancleButton"
-            v-on:click="cancleAppointment(appointment._id)"
+            v-on:click="cancelAppointment(appointment._id)"
           >
             Cancel
           </button>
         </td>
-      </tr>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -52,13 +52,13 @@ export default {
         }
       )
     },
-    cancleAppointment(id) {
+    cancelAppointment(id) {
       Api.delete(
         '/patients/' + this.$route.params.id + '/appointments/' + id,
         {}
       )
         .then((response) => {
-          alert('Are you sure to cancle this booking?')
+          alert('Are you sure to cancel this booking?')
           console.log(response)
           this.list = response.data.appointment
           this.getAppointments()

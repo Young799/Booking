@@ -10,7 +10,7 @@
         <th>Message</th>
         <th>Appointment Date</th>
         <th>Appointment Time</th>
-        <th>Appointment doctor</th>
+        <th>Cancel</th>
         <th></th>
       </tr>
       <tr v-for="notification in list" v-bind:key="notification._id">
