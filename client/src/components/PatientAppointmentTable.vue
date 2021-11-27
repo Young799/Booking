@@ -13,10 +13,10 @@
         <th></th>
       </tr>
       <tbody v-for="appointment in list"  v-bind:key="appointment._id">
-        <tr v-if="appointment.is_confirmed">
+        <tr v-if="!appointment.is_confirmed">
         <td>{{ appointment.appointment_date }}</td>
         <td>{{ appointment.time }}</td>
-        <td>{{ "under review" }}</td>
+        <td>{{ "request received"}}</td>
         <td>
           <button
             id="cancleButton"

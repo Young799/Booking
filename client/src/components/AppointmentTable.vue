@@ -25,14 +25,14 @@
           <td>{{ appointment.doctor.first_name}}</td>
           <td>{{ appointment.is_confirmed }}</td>
           <td>
-           <button
+          <button
               id="editButton"
               v-on:click="
-               editAppointment(
-                 appointment._id,
-                 appointment.patient,
-                 appointment.appointment_date,
-                 appointment.time)  ">
+              editAppointment(
+                appointment._id,
+                appointment.patient,
+                appointment.appointment_date,
+                appointment.time)  ">
               Confirm
             </button>
           </td>
@@ -43,13 +43,13 @@
           >
             Delete
           </button>
-         </td>
+        </td>
         </tr>
         <tr v-else>
           <td>{{ appointment.appointment_date }}</td>
           <td>{{ appointment.time }}</td>
           <td>{{ appointment.patient.first_name}}</td>
-          <td>{{""}}</td>
+          <td>{{"not assigned"}}</td>
           <td>{{ appointment.is_confirmed }}</td>
         <td>
           <button
