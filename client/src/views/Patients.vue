@@ -3,7 +3,8 @@
     <user-menu />
     <patient-profile />
     <booking-form />
-    <patient-appointment-table />
+    <patient-Appointment-table />
+    <confirmedAppointment/>
     <div class="noti">
       <button
         type="button"
@@ -21,13 +22,15 @@ import UserMenu from '../components/UserMenu.vue'
 import BookingForm from '../components/BookingForm.vue'
 import PatientAppointmentTable from '../components/PatientAppointmentTable.vue'
 import PatientProfile from '../components/PatientProfile.vue'
+import confirmedAppointment from '../components/ConfirmedAppointment.vue'
 
 export default {
   components: {
     UserMenu,
     PatientProfile,
     BookingForm,
-    PatientAppointmentTable
+    PatientAppointmentTable,
+    confirmedAppointment
 
   },
   methods: {

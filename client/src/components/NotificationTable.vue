@@ -10,12 +10,14 @@
         <th>Message</th>
         <th>Appointment Date</th>
         <th>Appointment Time</th>
+        <th>Cancel</th>
         <th></th>
       </tr>
       <tr v-for="notification in list" v-bind:key="notification._id">
         <td>{{ notification.text }}</td>
         <td>{{ notification.appointment_date }}</td>
         <td>{{ notification.appointment_time }}</td>
+
         <td>
           <button
             id="cancleButton"

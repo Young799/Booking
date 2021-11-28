@@ -48,21 +48,22 @@ export default {
       booking: {
         date: '',
         time: '',
-        doctor: ''
+        doctor: null
       }
     }
   },
   methods: {
     sendRequest() {
+    //  const doctorObject = JSON.parse(this.booking.doctor)
       Api.post(`/patients/${this.$route.params.id}/appointments`, {
         appointment_date: this.booking.date,
-        time: this.booking.time,
-        doctor: { _id: '61915563f2e5bf1514b323d9' } // update with mongoDB atlas
+        time: this.booking.time
       })
         .then(response => {
           alert('Do you want to send a booking request')
           this.$router.go()
           console.log(response)
+          this.$router.go()
         })
 
         .catch(error => {

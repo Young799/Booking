@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Patient = require('../models/patient');
+var Doctor =require ('../models/doctor');
 var Notification = require('../models/notification');
 
 router.post('/api/patients/:patient_id/notifications', async function (req, res, next) {
@@ -9,7 +10,7 @@ router.post('/api/patients/:patient_id/notifications', async function (req, res,
         text: 'Your appointment has been approved',
         appointment_date: req.body.appointment_date,
         appointment_time: req.body.appointment_time,
-        patient: patient
+        patient: patient,
     });
     notification.save(function (err, notification) {
 

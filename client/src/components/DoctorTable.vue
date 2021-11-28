@@ -11,7 +11,7 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Personal Number</th>
-          <th>Speciality</th>
+          <th>Specialty</th>
           <th>Email Address</th>
           <th>Action</th>
         </tr>
