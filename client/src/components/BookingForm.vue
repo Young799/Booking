@@ -1,5 +1,5 @@
 <template>
-  <div class="booking">
+  <div class="booking" data-server-rendered="true">
     <b-container>
       <div class="row pt-2">
         <div class="col-12">
@@ -61,6 +61,7 @@ export default {
       })
         .then(response => {
           alert('Do you want to send a booking request')
+          this.$router.go()
           console.log(response)
           this.$router.go()
         })
@@ -73,12 +74,9 @@ export default {
 }
 </script>
 
-<style>
+<style >
 .booking {
   margin: 30px auto;
-}
-.form-control {
-  width: 100px;
 }
 .menu_1 {
   font-family: Impact, Charcoal, sans-serif;
